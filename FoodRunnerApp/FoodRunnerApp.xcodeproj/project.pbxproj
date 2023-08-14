@@ -16,11 +16,9 @@
 		C74DC68D2A87EA30005DDF7A /* FoodRunnerAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74DC68C2A87EA30005DDF7A /* FoodRunnerAppUITests.swift */; };
 		C74DC68F2A87EA30005DDF7A /* FoodRunnerAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74DC68E2A87EA30005DDF7A /* FoodRunnerAppUITestsLaunchTests.swift */; };
 		C74DC6A52A87EC96005DDF7A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74DC6A42A87EC96005DDF7A /* HomeViewController.swift */; };
-		C74DC6A72A87ED7D005DDF7A /* UIViewController+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74DC6A62A87ED7D005DDF7A /* UIViewController+Preview.swift */; };
 		C74DC6A92A87F159005DDF7A /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74DC6A82A87F159005DDF7A /* CategoryCell.swift */; };
-		C74DC6AF2A87F8B0005DDF7A /* CategoryHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74DC6AE2A87F8B0005DDF7A /* CategoryHeaderReusableView.swift */; };
+		C74DC6AF2A87F8B0005DDF7A /* CatalogCategoryHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74DC6AE2A87F8B0005DDF7A /* CatalogCategoryHeaderReusableView.swift */; };
 		C74DC6B12A8805D1005DDF7A /* CatalogData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74DC6B02A8805D1005DDF7A /* CatalogData.swift */; };
-		C74DC6B32A880712005DDF7A /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74DC6B22A880712005DDF7A /* MockData.swift */; };
 		C74DC6B52A8809F7005DDF7A /* UIColor+hexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74DC6B42A8809F6005DDF7A /* UIColor+hexString.swift */; };
 		C74DC6BD2A880B35005DDF7A /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C74DC6B72A880B34005DDF7A /* Inter-Regular.ttf */; };
 		C74DC6BE2A880B35005DDF7A /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C74DC6B82A880B34005DDF7A /* Inter-Medium.ttf */; };
@@ -34,6 +32,13 @@
 		C7B314F42A88FEC400387390 /* CompositionalLayoutConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B314F32A88FEC400387390 /* CompositionalLayoutConfigurator.swift */; };
 		C7B314F62A89003F00387390 /* UIView+addViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B314F52A89003F00387390 /* UIView+addViews.swift */; };
 		C7B314F92A892C7F00387390 /* ProductsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B314F82A892C7F00387390 /* ProductsData.swift */; };
+		C7D54E3A2A8A3E35009CBB63 /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D54E392A8A3E35009CBB63 /* GalleryViewController.swift */; };
+		C7D54E3C2A8A4FF8009CBB63 /* HomeScreenProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D54E3B2A8A4FF8009CBB63 /* HomeScreenProtocols.swift */; };
+		C7D54E3F2A8A5883009CBB63 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D54E3E2A8A5883009CBB63 /* HomePresenter.swift */; };
+		C7D54E412A8A58E5009CBB63 /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D54E402A8A58E5009CBB63 /* HomeInteractor.swift */; };
+		C7D54E432A8A5910009CBB63 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D54E422A8A5910009CBB63 /* HomeRouter.swift */; };
+		C7D54E452A8A5933009CBB63 /* HomeModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D54E442A8A5933009CBB63 /* HomeModuleBuilder.swift */; };
+		C7D54E482A8A797A009CBB63 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D54E472A8A797A009CBB63 /* NetworkService.swift */; };
 		C7D5F3BC2A88184D000E4A06 /* PromoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D5F3BB2A88184D000E4A06 /* PromoCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -68,11 +73,9 @@
 		C74DC68C2A87EA30005DDF7A /* FoodRunnerAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodRunnerAppUITests.swift; sourceTree = "<group>"; };
 		C74DC68E2A87EA30005DDF7A /* FoodRunnerAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodRunnerAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C74DC6A42A87EC96005DDF7A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		C74DC6A62A87ED7D005DDF7A /* UIViewController+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Preview.swift"; sourceTree = "<group>"; };
 		C74DC6A82A87F159005DDF7A /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
-		C74DC6AE2A87F8B0005DDF7A /* CategoryHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHeaderReusableView.swift; sourceTree = "<group>"; };
+		C74DC6AE2A87F8B0005DDF7A /* CatalogCategoryHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogCategoryHeaderReusableView.swift; sourceTree = "<group>"; };
 		C74DC6B02A8805D1005DDF7A /* CatalogData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogData.swift; sourceTree = "<group>"; };
-		C74DC6B22A880712005DDF7A /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		C74DC6B42A8809F6005DDF7A /* UIColor+hexString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+hexString.swift"; sourceTree = "<group>"; };
 		C74DC6B72A880B34005DDF7A /* Inter-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.ttf"; sourceTree = "<group>"; };
 		C74DC6B82A880B34005DDF7A /* Inter-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.ttf"; sourceTree = "<group>"; };
@@ -86,6 +89,13 @@
 		C7B314F32A88FEC400387390 /* CompositionalLayoutConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionalLayoutConfigurator.swift; sourceTree = "<group>"; };
 		C7B314F52A89003F00387390 /* UIView+addViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+addViews.swift"; sourceTree = "<group>"; };
 		C7B314F82A892C7F00387390 /* ProductsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsData.swift; sourceTree = "<group>"; };
+		C7D54E392A8A3E35009CBB63 /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
+		C7D54E3B2A8A4FF8009CBB63 /* HomeScreenProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenProtocols.swift; sourceTree = "<group>"; };
+		C7D54E3E2A8A5883009CBB63 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		C7D54E402A8A58E5009CBB63 /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
+		C7D54E422A8A5910009CBB63 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		C7D54E442A8A5933009CBB63 /* HomeModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModuleBuilder.swift; sourceTree = "<group>"; };
+		C7D54E472A8A797A009CBB63 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		C7D5F3BB2A88184D000E4A06 /* PromoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,7 +137,7 @@
 		C74D37602A8947D400479CDB /* ReusableViews */ = {
 			isa = PBXGroup;
 			children = (
-				C74DC6AE2A87F8B0005DDF7A /* CategoryHeaderReusableView.swift */,
+				C74DC6AE2A87F8B0005DDF7A /* CatalogCategoryHeaderReusableView.swift */,
 			);
 			path = ReusableViews;
 			sourceTree = "<group>";
@@ -164,9 +174,9 @@
 		C74DC66A2A87EA2E005DDF7A /* FoodRunnerApp */ = {
 			isa = PBXGroup;
 			children = (
-				C74D37612A89485900479CDB /* Application */,
 				C74DC6A22A87EB16005DDF7A /* Controllers */,
-				C74DC6A32A87EB1B005DDF7A /* Views */,
+				C74D37612A89485900479CDB /* Application */,
+				C7D54E462A8A6EB8009CBB63 /* FoodRunnerScreens */,
 				C74DC6A12A87EB08005DDF7A /* Models */,
 				C74DC69D2A87EACD005DDF7A /* Library */,
 				C74DC69C2A87EAB3005DDF7A /* Resources */,
@@ -206,7 +216,6 @@
 			children = (
 				C74DC6B62A880B19005DDF7A /* Fonts */,
 				C74DC6742A87EA2F005DDF7A /* Assets.xcassets */,
-				C74DC6B22A880712005DDF7A /* MockData.swift */,
 				C74DC6C32A880BB6005DDF7A /* FontsRes.swift */,
 			);
 			path = Resources;
@@ -226,7 +235,6 @@
 		C74DC69E2A87EAE3005DDF7A /* Extentions */ = {
 			isa = PBXGroup;
 			children = (
-				C74DC6A62A87ED7D005DDF7A /* UIViewController+Preview.swift */,
 				C74DC6B42A8809F6005DDF7A /* UIColor+hexString.swift */,
 				C7B314F52A89003F00387390 /* UIView+addViews.swift */,
 			);
@@ -243,6 +251,7 @@
 		C74DC6A02A87EAFB005DDF7A /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				C7D54E472A8A797A009CBB63 /* NetworkService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -259,20 +268,9 @@
 		C74DC6A22A87EB16005DDF7A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C74DC6A42A87EC96005DDF7A /* HomeViewController.swift */,
 				C74DC6C52A880DCA005DDF7A /* MockViewController.swift */,
-				C7B314F12A88EBC800387390 /* HomeCatalogView.swift */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		C74DC6A32A87EB1B005DDF7A /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				C74D375F2A8947BE00479CDB /* HomeCells */,
-				C74D37602A8947D400479CDB /* ReusableViews */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		C74DC6B62A880B19005DDF7A /* Fonts */ = {
@@ -294,6 +292,55 @@
 				C7B314F32A88FEC400387390 /* CompositionalLayoutConfigurator.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		C7D54E352A8A3D67009CBB63 /* HomeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				C7D54E362A8A3D75009CBB63 /* HomeCatalogViews */,
+				C74DC6A42A87EC96005DDF7A /* HomeViewController.swift */,
+				C7D54E3E2A8A5883009CBB63 /* HomePresenter.swift */,
+				C7D54E402A8A58E5009CBB63 /* HomeInteractor.swift */,
+				C7D54E422A8A5910009CBB63 /* HomeRouter.swift */,
+				C7D54E3B2A8A4FF8009CBB63 /* HomeScreenProtocols.swift */,
+				C7D54E442A8A5933009CBB63 /* HomeModuleBuilder.swift */,
+			);
+			path = HomeScreen;
+			sourceTree = "<group>";
+		};
+		C7D54E362A8A3D75009CBB63 /* HomeCatalogViews */ = {
+			isa = PBXGroup;
+			children = (
+				C74D375F2A8947BE00479CDB /* HomeCells */,
+				C74D37602A8947D400479CDB /* ReusableViews */,
+				C7B314F12A88EBC800387390 /* HomeCatalogView.swift */,
+			);
+			path = HomeCatalogViews;
+			sourceTree = "<group>";
+		};
+		C7D54E372A8A3DC8009CBB63 /* GalleryScreen */ = {
+			isa = PBXGroup;
+			children = (
+				C7D54E382A8A3DEF009CBB63 /* GalleryViews */,
+				C7D54E392A8A3E35009CBB63 /* GalleryViewController.swift */,
+			);
+			path = GalleryScreen;
+			sourceTree = "<group>";
+		};
+		C7D54E382A8A3DEF009CBB63 /* GalleryViews */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GalleryViews;
+			sourceTree = "<group>";
+		};
+		C7D54E462A8A6EB8009CBB63 /* FoodRunnerScreens */ = {
+			isa = PBXGroup;
+			children = (
+				C7D54E352A8A3D67009CBB63 /* HomeScreen */,
+				C7D54E372A8A3DC8009CBB63 /* GalleryScreen */,
+			);
+			path = FoodRunnerScreens;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -434,21 +481,26 @@
 			files = (
 				C74DC66C2A87EA2E005DDF7A /* AppDelegate.swift in Sources */,
 				C74DC6C42A880BB6005DDF7A /* FontsRes.swift in Sources */,
-				C74DC6AF2A87F8B0005DDF7A /* CategoryHeaderReusableView.swift in Sources */,
+				C74DC6AF2A87F8B0005DDF7A /* CatalogCategoryHeaderReusableView.swift in Sources */,
+				C7D54E452A8A5933009CBB63 /* HomeModuleBuilder.swift in Sources */,
+				C7D54E3F2A8A5883009CBB63 /* HomePresenter.swift in Sources */,
 				C74DC6C62A880DCB005DDF7A /* MockViewController.swift in Sources */,
 				C74DC6B52A8809F7005DDF7A /* UIColor+hexString.swift in Sources */,
+				C7D54E412A8A58E5009CBB63 /* HomeInteractor.swift in Sources */,
 				C7054B812A88278700E4E23E /* BigPromoCell.swift in Sources */,
 				C74DC66E2A87EA2E005DDF7A /* SceneDelegate.swift in Sources */,
+				C7D54E482A8A797A009CBB63 /* NetworkService.swift in Sources */,
 				C7B314F22A88EBC800387390 /* HomeCatalogView.swift in Sources */,
 				C74DC6A52A87EC96005DDF7A /* HomeViewController.swift in Sources */,
 				C74DC6B12A8805D1005DDF7A /* CatalogData.swift in Sources */,
-				C74DC6B32A880712005DDF7A /* MockData.swift in Sources */,
 				C7B314F62A89003F00387390 /* UIView+addViews.swift in Sources */,
 				C7B314F42A88FEC400387390 /* CompositionalLayoutConfigurator.swift in Sources */,
-				C74DC6A72A87ED7D005DDF7A /* UIViewController+Preview.swift in Sources */,
 				C74DC6A92A87F159005DDF7A /* CategoryCell.swift in Sources */,
+				C7D54E3C2A8A4FF8009CBB63 /* HomeScreenProtocols.swift in Sources */,
+				C7D54E3A2A8A3E35009CBB63 /* GalleryViewController.swift in Sources */,
 				C7B314F92A892C7F00387390 /* ProductsData.swift in Sources */,
 				C7D5F3BC2A88184D000E4A06 /* PromoCell.swift in Sources */,
+				C7D54E432A8A5910009CBB63 /* HomeRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

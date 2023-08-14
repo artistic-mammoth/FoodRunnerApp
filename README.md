@@ -15,6 +15,7 @@ The app is a simple implementation of a food delivery service.
 # Features
 - Using UICollectionViewCompositionalLayout
 - Custom Fonts
+- VIPER
 
 # Acknowledgement
 - Illustrations from [unsplash.com](https://unsplash.com)

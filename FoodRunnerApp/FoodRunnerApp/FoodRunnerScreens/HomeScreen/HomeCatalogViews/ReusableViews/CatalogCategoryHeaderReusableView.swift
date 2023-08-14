@@ -7,9 +7,9 @@
 
 import UIKit
 
-class CategoryHeaderReusableView: UICollectionReusableView {
+class CatalogCategoryHeaderReusableView: UICollectionReusableView {
     // MARK: - Public properties
-    static let reuseIdentifier = "CategoryHeaderReusableView"
+    static let reuseIdentifier = "CatalogCategoryHeaderReusableView"
     
     // MARK: - Views
     private lazy var title: UILabel = {

@@ -7,10 +7,13 @@
 
 import UIKit
 
+protocol HomeCatalogViewDelegate: UIViewController {
+    func didSelectItem(_ data: CatalogSectionType)
+}
+
 final class HomeCatalogView: UIView {
     // MARK: - Public properties
-    /// Callback when select item
-    var didSelectItem: ((_ data: CatalogSectionType) -> Void)?
+    weak var delegate: HomeCatalogViewDelegate?
     
     /// Data for present in catalog view
     var catalogData: CatalogData = [] {
@@ -59,8 +62,9 @@ extension HomeCatalogView: UICollectionViewDelegate, UICollectionViewDataSource 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath)
         animateTappedCell(cell) { [weak self] in
+            // TODO: - Update when will set ID
             guard let data = self?.catalogData[indexPath.section].type else { return }
-            self?.didSelectItem?(data)
+            self?.delegate?.didSelectItem(data)
         }
     }
     
@@ -99,13 +103,12 @@ extension HomeCatalogView: UICollectionViewDelegate, UICollectionViewDataSource 
             
             return cell
         }
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
         case UICollectionView.elementKindSectionHeader:
-            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CategoryHeaderReusableView.reuseIdentifier, for: indexPath) as? CategoryHeaderReusableView else { fatalError("Cannot create new reusable view") }
+            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CatalogCategoryHeaderReusableView.reuseIdentifier, for: indexPath) as? CatalogCategoryHeaderReusableView else { fatalError("Cannot create new reusable view") }
             
             let titleName = catalogData[indexPath.section].headerTitle
             header.configureWith(label: titleName)
@@ -143,7 +146,7 @@ private extension HomeCatalogView {
         collectionView.register(PromoCell.self, forCellWithReuseIdentifier: PromoCell.reuseIdentifier)
         collectionView.register(BigPromoCell.self, forCellWithReuseIdentifier: BigPromoCell.reuseIdentifier)
         
-        collectionView.register(CategoryHeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CategoryHeaderReusableView.reuseIdentifier)
+        collectionView.register(CatalogCategoryHeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CatalogCategoryHeaderReusableView.reuseIdentifier)
         
     }
     

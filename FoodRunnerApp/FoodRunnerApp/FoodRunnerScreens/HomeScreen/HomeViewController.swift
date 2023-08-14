@@ -8,16 +8,27 @@
 import UIKit
 
 final class HomeViewController: UIViewController {
+    // MARK: - Public properties
+    var presenter: HomePresenterProtocol?
+    
     // MARK: - Views
     private lazy var catalogView = HomeCatalogView()
-
+    
+    private lazy var loadingLabel: UILabel = {
+        $0.text = "Загрузка..."
+        $0.textColor = .black
+        $0.font = .boldInter(size: 20)
+        $0.textAlignment = .center
+        return $0
+    }(UILabel())
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        setupHandlers()
+        presenter?.viewDidLoaded()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
@@ -29,54 +40,44 @@ final class HomeViewController: UIViewController {
     }
 }
 
+// MARK: - HomeViewProtocol
+extension HomeViewController: HomeViewProtocol {
+    func updateCatalogDataWith(_ data: CatalogData) {
+        loadingLabel.isHidden = true
+        catalogView.isHidden = false
+        DispatchQueue.main.async { [weak self] in
+            self?.catalogView.catalogData = data
+        }
+    }
+}
+
+// MARK: - HomeCatalogViewDelegate
+extension HomeViewController: HomeCatalogViewDelegate {
+    func didSelectItem(_ data: CatalogSectionType) {
+        presenter?.didSelectItem(data)
+    }
+
+}
+
 // MARK: - Private extension
 private extension HomeViewController {
     func setupView() {
-        view.addViews(catalogView)
+        view.addViews([loadingLabel, catalogView])
         
-        updateCatalogDataWith(MockData.data)
-        
+        catalogView.delegate = self
+                
         view.backgroundColor = .white
-            
+        
+        catalogView.isHidden = true
+        
         NSLayoutConstraint.activate([
+            loadingLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loadingLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            
             catalogView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
             catalogView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             catalogView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
             catalogView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
         ])
     }
-    
-    func setupHandlers() {
-        catalogView.didSelectItem = { [weak self] data in
-            guard let self = self else { return }
-            
-            // TODO: Remove mockup VC
-            let vc = MockViewController()
-            
-            switch data {
-            case .category: vc.view.backgroundColor = UIColor(hexString: "adc178")
-            case .promo: vc.view.backgroundColor = UIColor(hexString: "bbd0ff")
-            case .bigPromo: vc.view.backgroundColor = UIColor(hexString: "40798c")
-            }
-            
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-    }
-    
-    func updateCatalogDataWith(_ data: CatalogData) {
-        catalogView.catalogData = data
-    }
 }
-
-// MARK: - Preview
-#if DEBUG
-import SwiftUI
-
-@available(iOS 13, *)
-struct HomePreview: PreviewProvider {
-    
-    static var previews: some View {
-        HomeViewController().toPreview()
-    }
-}
-#endif
