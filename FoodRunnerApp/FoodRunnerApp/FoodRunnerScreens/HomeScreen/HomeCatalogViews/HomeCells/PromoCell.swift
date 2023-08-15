@@ -58,12 +58,12 @@ class PromoCell: UICollectionViewCell {
     }
     
     // MARK: - Public methods
-    func configureWith(product: ProductData) {
-        nameLabel.text = product.name
-        descriptionLabel.text = product.description
-        priceLabel.text = "\(product.price) ₽"
+    func configureWith(name: String, description: String, price: Int, imageURL: String) {
+        nameLabel.text = name
+        descriptionLabel.text = description
+        priceLabel.text = "\(price) ₽"
         
-        if let imageURL = product.imageURLsSet.first {
+        if imageURL != "" {
             imageView.image = UIImage(named: imageURL)
         } else {
             imageView.image = UIImage(systemName: "cart.circle.fill")

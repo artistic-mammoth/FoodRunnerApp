@@ -11,12 +11,11 @@ protocol HomeViewProtocol: AnyObject {
 
 protocol HomePresenterProtocol: AnyObject {
     func viewDidLoaded()
-    func catalogDataDidLoaded(data: CatalogData)
     func didSelectItem(_ data: CatalogSectionType)
 }
 
 protocol HomeInteractorProtocol: AnyObject {
-    func loadCatalogData()
+    func loadPromoData(completion: @escaping ([BigPromoData]?, [ProductData]?, [ProductData]?) -> Void)
 }
 
 protocol HomeRouterProtocol: AnyObject {

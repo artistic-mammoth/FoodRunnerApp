@@ -28,6 +28,7 @@
 		C74DC6C22A880B35005DDF7A /* Inter-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C74DC6BC2A880B35005DDF7A /* Inter-Light.ttf */; };
 		C74DC6C42A880BB6005DDF7A /* FontsRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74DC6C32A880BB6005DDF7A /* FontsRes.swift */; };
 		C74DC6C62A880DCB005DDF7A /* MockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74DC6C52A880DCA005DDF7A /* MockViewController.swift */; };
+		C7A88AD82A8AB85700A24038 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A88AD72A8AB85700A24038 /* DataService.swift */; };
 		C7B314F22A88EBC800387390 /* HomeCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B314F12A88EBC800387390 /* HomeCatalogView.swift */; };
 		C7B314F42A88FEC400387390 /* CompositionalLayoutConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B314F32A88FEC400387390 /* CompositionalLayoutConfigurator.swift */; };
 		C7B314F62A89003F00387390 /* UIView+addViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B314F52A89003F00387390 /* UIView+addViews.swift */; };
@@ -85,6 +86,7 @@
 		C74DC6BC2A880B35005DDF7A /* Inter-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Light.ttf"; sourceTree = "<group>"; };
 		C74DC6C32A880BB6005DDF7A /* FontsRes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontsRes.swift; sourceTree = "<group>"; };
 		C74DC6C52A880DCA005DDF7A /* MockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockViewController.swift; sourceTree = "<group>"; };
+		C7A88AD72A8AB85700A24038 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		C7B314F12A88EBC800387390 /* HomeCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCatalogView.swift; sourceTree = "<group>"; };
 		C7B314F32A88FEC400387390 /* CompositionalLayoutConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionalLayoutConfigurator.swift; sourceTree = "<group>"; };
 		C7B314F52A89003F00387390 /* UIView+addViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+addViews.swift"; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				C7D54E472A8A797A009CBB63 /* NetworkService.swift */,
+				C7A88AD72A8AB85700A24038 /* DataService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -484,6 +487,7 @@
 				C74DC6AF2A87F8B0005DDF7A /* CatalogCategoryHeaderReusableView.swift in Sources */,
 				C7D54E452A8A5933009CBB63 /* HomeModuleBuilder.swift in Sources */,
 				C7D54E3F2A8A5883009CBB63 /* HomePresenter.swift in Sources */,
+				C7A88AD82A8AB85700A24038 /* DataService.swift in Sources */,
 				C74DC6C62A880DCB005DDF7A /* MockViewController.swift in Sources */,
 				C74DC6B52A8809F7005DDF7A /* UIColor+hexString.swift in Sources */,
 				C7D54E412A8A58E5009CBB63 /* HomeInteractor.swift in Sources */,

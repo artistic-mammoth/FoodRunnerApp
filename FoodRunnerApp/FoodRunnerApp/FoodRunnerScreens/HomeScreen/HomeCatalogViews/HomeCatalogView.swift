@@ -87,8 +87,7 @@ extension HomeCatalogView: UICollectionViewDelegate, UICollectionViewDataSource 
             
             guard let item = catalogData[indexPath.section].items[indexPath.row] as? PromoCatalogItem else { fatalError("Cannot get item") }
             
-            let product = item.product
-            cell.configureWith(product: product)
+            cell.configureWith(name: item.name, description: item.description, price: item.price, imageURL: item.imageURL)
             
             return cell
             
@@ -97,9 +96,7 @@ extension HomeCatalogView: UICollectionViewDelegate, UICollectionViewDataSource 
             
             guard let item = catalogData[indexPath.section].items[indexPath.row] as? BigPromoCatalogItem else { fatalError("Cannot get item") }
             
-            let titleName = item.title
-            let imageURL = item.imageURL
-            cell.configureWith(label: titleName, imageURL: imageURL)
+            cell.configureWith(label: item.title, imageURL: item.imageURL)
             
             return cell
         }

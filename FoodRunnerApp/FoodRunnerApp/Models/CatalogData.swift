@@ -51,10 +51,23 @@ struct CategoryCatalogItem: CatalogItemProtocol {
 }
 
 struct PromoCatalogItem: CatalogItemProtocol {
-    let product: ProductData
+    let id: String
+    let name: String
+    let description: String
+    let imageURL: String
+    let price: Int
+    
+    init(id: String, name: String, description: String = "", imageURL: String, price: Int) {
+        self.id = id
+        self.name = name
+        self.description = description
+        self.imageURL = imageURL
+        self.price = price
+    }
 }
 
 struct BigPromoCatalogItem: CatalogItemProtocol {
+    let id: String
     let title: String
     let imageURL: String
 }

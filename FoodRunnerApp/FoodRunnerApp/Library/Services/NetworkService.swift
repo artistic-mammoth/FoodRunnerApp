@@ -13,68 +13,81 @@ final class NetworkService {
     private init() {}
     
     // MARK: - Public methods
-    func getBigPromos(completion: @escaping (([BigPromoCatalogItem]?) -> Void)) {
+    func getBigPromos(completion: @escaping (([BigPromoData]?) -> Void)) {
         DispatchQueue.global(qos: .userInteractive).asyncAfter(deadline: .now()+0.1) {
-            let data = [BigPromoCatalogItem(title: "Очень необходимая подборка", imageURL: "bigPromo_1"),
-                        BigPromoCatalogItem(title: "Сладенькое на десерт", imageURL: "bigPromo_2"),
-                        BigPromoCatalogItem(title: "Шикарный завтрак", imageURL: "bigPromo_3"),
-                        BigPromoCatalogItem(title: "Очень необходимая подборка", imageURL: "bigPromo_1"),
-                        BigPromoCatalogItem(title: "Сладенькое на десерт", imageURL: "bigPromo_2"),
-                        BigPromoCatalogItem(title: "Шикарный завтрак", imageURL: "bigPromo_3")]
-            completion(data)
+            let bigPromos = [BigPromoData(id: "1", title: "Очень необходимая подборка", imageURL: "bigPromo_1"),
+                             BigPromoData(id: "2", title: "Сладенькое на десерт", imageURL: "bigPromo_2"),
+                             BigPromoData(id: "3", title: "Шикарный завтрак", imageURL: "bigPromo_3")]
+            
+            bigPromos.forEach { DataService.shared.addBigPromo($0) }
+
+            completion(bigPromos)
         }
     }
     
-    func getFirstPromos(completion: @escaping (([PromoCatalogItem]?) -> Void)) {
+    func getFirstPromos(completion: @escaping (([ProductData]?) -> Void)) {
         DispatchQueue.global(qos: .userInteractive).asyncAfter(deadline: .now()+0.1) {
-            let data = [PromoCatalogItem(product: ProductData(
+            let products = [ProductData(
+                id: "1",
                 name: "Молоко Суперское",
                 description: "900 мл",
                 imageURLsSet: ["promo_1", "face.smiling"],
-                price: 79)),
-                        PromoCatalogItem(product: ProductData(
+                price: 79),
+                        ProductData(
+                            id: "2",
                             name: "Коровки няшные",
                             description: "5 шт",
                             imageURLsSet: ["promo_1"],
-                            price: 110)),
-                        PromoCatalogItem(product: ProductData(
+                            price: 110),
+                        ProductData(
+                            id: "3",
                             name: "Альтернативное молоко с тем же лого",
                             description: "750 мл",
                             imageURLsSet: ["promo_1"],
-                            price: 340)),
-                        PromoCatalogItem(product: ProductData(
+                            price: 340),
+                        ProductData(
+                            id: "4",
                             name: "Куча конфет без фото",
                             description: "куча",
                             imageURLsSet: [],
-                            price: 200))]
-            completion(data)
+                            price: 200)]
+            
+            products.forEach { DataService.shared.addProduct($0) }
+            
+            completion(products)
         }
     }
     
-    func getSecondPromos(completion: @escaping (([PromoCatalogItem]?) -> Void)) {
+    func getSecondPromos(completion: @escaping (([ProductData]?) -> Void)) {
         DispatchQueue.global(qos: .userInteractive).asyncAfter(deadline: .now()+0.1) {
-            let data = [PromoCatalogItem(product: ProductData(
-                name: "Куча конфет без фото",
-                description: "куча",
-                imageURLsSet: [],
-                price: 200)),
-                        PromoCatalogItem(product: ProductData(
-                            name: "Альтернативное молоко с тем же лого",
-                            description: "750 мл",
-                            imageURLsSet: ["promo_1"],
-                            price: 340)),
-                        PromoCatalogItem(product: ProductData(
+            let products = [ProductData(
+                id: "1",
+                name: "Молоко Суперское",
+                description: "900 мл",
+                imageURLsSet: ["promo_1", "face.smiling"],
+                price: 79),
+                        ProductData(
+                            id: "2",
                             name: "Коровки няшные",
                             description: "5 шт",
                             imageURLsSet: ["promo_1"],
-                            price: 110)),
-                        PromoCatalogItem(product: ProductData(
-                            name: "Молоко Суперское",
-                            description: "900 мл",
-                            imageURLsSet: ["promo_1", "face.smiling"],
-                            price: 79))]
-            completion(data)
+                            price: 110),
+                        ProductData(
+                            id: "3",
+                            name: "Альтернативное молоко с тем же лого",
+                            description: "750 мл",
+                            imageURLsSet: ["promo_1"],
+                            price: 340),
+                        ProductData(
+                            id: "4",
+                            name: "Куча конфет без фото",
+                            description: "куча",
+                            imageURLsSet: [],
+                            price: 200)]
+            
+            products.forEach { DataService.shared.addProduct($0) }
+            
+            completion(products)
         }
     }
-    
 }
