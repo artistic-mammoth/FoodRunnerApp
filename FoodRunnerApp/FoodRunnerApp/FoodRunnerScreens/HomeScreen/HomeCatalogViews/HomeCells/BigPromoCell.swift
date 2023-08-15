@@ -51,16 +51,24 @@ class BigPromoCell: UICollectionViewCell {
     
     // MARK: - Public methods
     func configureWith(label: String, imageURL: String) {
-        image.image = UIImage(named: imageURL)
         title.text = label
+        
+        NetworkService.shared.fetchImage(from: imageURL) { [weak self] imageData in
+            DispatchQueue.main.async {
+                if let imageData = imageData {
+                    let image = UIImage(data: imageData)
+                    self?.image.image = image
+                }
+            }
+        }
     }
     
     // MARK: - Private methods
     private func setupView() {
         addViews([image, title])
         layer.insertSublayer(gradientSubstrate, at: 1)
-                
-        backgroundColor = .black
+        
+        backgroundColor = .gray
         layer.cornerRadius = 13
         clipsToBounds = true
 

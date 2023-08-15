@@ -25,14 +25,12 @@ extension HomePresenter: HomePresenterProtocol {
     func didSelectItem(_ data: CatalogSectionType) {
         router.openCatalogView(data)
     }
-
+    
     func viewDidLoaded() {
         interactor.loadPromoData(completion: { [weak self] bigPromos, firstPromos, secondPromos in
             guard let self = self else { return }
-            DispatchQueue.main.async {
-                let data = self.generateCatalogData(bigPromos: bigPromos, firstPromos: firstPromos, secondPromos: secondPromos)
-                self.view?.updateCatalogDataWith(data)
-            }
+            let data = self.generateCatalogData(bigPromos: bigPromos, firstPromos: firstPromos, secondPromos: secondPromos)
+            self.view?.updateCatalogDataWith(data)
         })
     }
 }

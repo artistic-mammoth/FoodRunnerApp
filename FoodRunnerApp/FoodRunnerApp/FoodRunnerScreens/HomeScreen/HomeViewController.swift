@@ -43,11 +43,9 @@ final class HomeViewController: UIViewController {
 // MARK: - HomeViewProtocol
 extension HomeViewController: HomeViewProtocol {
     func updateCatalogDataWith(_ data: CatalogData) {
-        loadingLabel.isHidden = true
-        catalogView.isHidden = false
-        DispatchQueue.main.async { [weak self] in
-            self?.catalogView.catalogData = data
-        }
+            loadingLabel.isHidden = true
+            catalogView.isHidden = false
+            catalogView.catalogData = data
     }
 }
 
