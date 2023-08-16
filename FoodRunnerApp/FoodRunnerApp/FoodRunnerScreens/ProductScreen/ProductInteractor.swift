@@ -12,6 +12,10 @@ final class ProductInteractor {
     weak var presenter: ProductPresenterProtocol?
 }
 
+// MARK: - ProductInteractorProtocol
 extension ProductInteractor: ProductInteractorProtocol {
-    
+    func getProductBy(id: String, completion: @escaping ((ProductData) -> Void)) {
+        let product = DataService.shared.getProductBy(id: id)
+        completion(product)
+    }
 }

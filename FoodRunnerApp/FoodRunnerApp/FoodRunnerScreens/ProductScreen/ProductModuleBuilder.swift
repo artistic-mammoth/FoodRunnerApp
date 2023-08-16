@@ -8,11 +8,11 @@
 import UIKit
 
 final class ProductModuleBuilder {
-    static func build(color: UIColor) -> ProductViewController {
+    static func build(id: String) -> ProductViewController {
         let interactor = ProductInteractor()
         let router = ProductRouter()
         let presenter = ProductPresenter(router: router, interactor: interactor)
-        let viewController = ProductViewController(color: color)
+        let viewController = ProductViewController(id: id)
         interactor.presenter = presenter
         router.viewController = viewController
         presenter.view = viewController

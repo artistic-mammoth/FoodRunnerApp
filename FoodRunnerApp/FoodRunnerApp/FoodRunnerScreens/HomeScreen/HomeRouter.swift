@@ -21,14 +21,17 @@ extension HomeRouter: HomeRouterProtocol {
             let vc = GalleryModuleBuilder.build(color: .blue)
             viewController?.navigationController?.pushViewController(vc, animated: true)
             return
-        case .promo:
-            let vc = ProductModuleBuilder.build(color: .purple)
-            viewController?.navigationController?.pushViewController(vc, animated: true)
-            return
         case .bigPromo:
             let vc = UIViewController()
             viewController?.navigationController?.pushViewController(vc, animated: true)
             return
+        default:
+            return
         }
+    }
+    
+    func openProductView(id: String) {
+        let vc = ProductModuleBuilder.build(id: id)
+        viewController?.navigationController?.pushViewController(vc, animated: true)
     }
 }

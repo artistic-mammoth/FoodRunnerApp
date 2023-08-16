@@ -23,9 +23,13 @@ final class HomeViewController: UIViewController {
     }(UILabel())
     
     // MARK: - Lifecycle
+    override func loadView() {
+        super.loadView()
+        setupView()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
         presenter?.viewDidLoaded()
     }
     
@@ -51,8 +55,8 @@ extension HomeViewController: HomeViewProtocol {
 
 // MARK: - HomeCatalogViewDelegate
 extension HomeViewController: HomeCatalogViewDelegate {
-    func didSelectItem(_ data: CatalogSectionType) {
-        presenter?.didSelectItem(data)
+    func didSelectItem(id: String, type: CatalogSectionType) {
+        presenter?.didSelectItem(id: id, type: type)
     }
 
 }

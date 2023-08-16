@@ -8,7 +8,7 @@
 import UIKit
 
 protocol HomeCatalogViewDelegate: UIViewController {
-    func didSelectItem(_ data: CatalogSectionType)
+    func didSelectItem(id: String, type: CatalogSectionType)
 }
 
 final class HomeCatalogView: UIView {
@@ -64,7 +64,8 @@ extension HomeCatalogView: UICollectionViewDelegate, UICollectionViewDataSource 
         animateTappedCell(cell) { [weak self] in
             // TODO: - Update when will set ID
             guard let data = self?.catalogData[indexPath.section].type else { return }
-            self?.delegate?.didSelectItem(data)
+            guard let id = self?.catalogData[indexPath.section].items[indexPath.row].id else { return }
+            self?.delegate?.didSelectItem(id: id, type: data)
         }
     }
     

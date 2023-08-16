@@ -29,7 +29,7 @@ final class NetworkService {
             if let dataJSON = try? JSONDecoder().decode(BigPromoDataResponse.self, from: data) {
                 let dataB = dataJSON.bigPromoData.map({BigPromoData(id: $0.id, title: $0.title, imageURL: $0.imageURL) })
                 // TODO: - Check for DataB
-//                dataB.forEach { DataService.shared.addBigPromo($0) }
+                //                dataB.forEach { DataService.shared.addBigPromo($0) }
                 
                 completion(dataB)
             }
@@ -49,7 +49,6 @@ final class NetworkService {
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
 
-        // TODO: - USE CASHE
         let dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data, error == nil else {
                 print(error?.localizedDescription ?? "No data")
@@ -67,31 +66,31 @@ final class NetworkService {
     func getFirstPromos(completion: @escaping (([ProductData]?) -> Void)) {
         DispatchQueue.global(qos: .userInteractive).asyncAfter(deadline: .now()+0.1) {
             let products = [ProductData(
-                id: "1",
+                id: "product_1",
                 name: "Молоко Суперское",
                 description: "900 мл",
-                imageURLsSet: ["promo_1", "face.smiling"],
+                imageURLsSet: ["https://www.dropbox.com/scl/fi/ysbghpit8mmkraa0jewdp/promo_1.jpg?rlkey=rcxw9zdq0shccd7ogo0vdf3le&dl=1"],
                 price: 79),
                             ProductData(
-                                id: "2",
+                                id: "product_2",
                                 name: "Коровки няшные",
                                 description: "5 шт",
                                 imageURLsSet: ["promo_1"],
                                 price: 110),
                             ProductData(
-                                id: "3",
+                                id: "product_3",
                                 name: "Альтернативное молоко с тем же лого",
                                 description: "750 мл",
                                 imageURLsSet: ["promo_1"],
                                 price: 340),
                             ProductData(
-                                id: "4",
+                                id: "product_4",
                                 name: "Куча конфет без фото",
                                 description: "куча",
                                 imageURLsSet: [],
                                 price: 200)]
             
-            products.forEach { CacheService.shared.addProductData(data: $0) }
+            products.forEach { DataService.shared.addProduct($0) }
             
             completion(products)
         }
@@ -100,7 +99,7 @@ final class NetworkService {
     func getSecondPromos(completion: @escaping (([ProductData]?) -> Void)) {
         DispatchQueue.global(qos: .userInteractive).asyncAfter(deadline: .now()+0.1) {
             let products = [ProductData(
-                id: "1",
+                id: "product_1",
                 name: "Молоко Суперское",
                 description: "900 мл",
                 imageURLsSet: ["promo_1", "face.smiling"],
@@ -124,7 +123,7 @@ final class NetworkService {
                                 imageURLsSet: [],
                                 price: 200)]
             
-//            products.forEach { DataService.shared.addProduct($0) }
+            //            products.forEach { DataService.shared.addProduct($0) }
             
             completion(products)
         }

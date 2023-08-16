@@ -6,15 +6,15 @@
 //
 
 protocol ProductViewProtocol: AnyObject {
-    
+    func setupProduct(name: String, description: String, price: Int, images: ProductImageURLsSet)
 }
 
 protocol ProductPresenterProtocol: AnyObject {
-    func viewDidLoaded()
+    func viewDidLoaded(id: String)
 }
 
 protocol ProductInteractorProtocol: AnyObject {
-    
+    func getProductBy(id: String, completion: @escaping ((ProductData) -> Void))
 }
 
 protocol ProductRouterProtocol: AnyObject {

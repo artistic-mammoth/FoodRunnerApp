@@ -16,7 +16,9 @@ enum CatalogSectionType {
     case bigPromo
 }
 
-protocol CatalogItemProtocol { }
+protocol CatalogItemProtocol {
+    var id: String { get set }
+}
 
 // MARK: - Catalog section
 struct CatalogSection {
@@ -37,7 +39,7 @@ struct CatalogSection {
 
 // MARK: - Catalog items
 struct CategoryCatalogItem: CatalogItemProtocol {
-    let id: String
+    var id: String
     let title: String
     let imageURL: String
     let isAvailable: Bool
@@ -51,7 +53,7 @@ struct CategoryCatalogItem: CatalogItemProtocol {
 }
 
 struct PromoCatalogItem: CatalogItemProtocol {
-    let id: String
+    var id: String
     let name: String
     let description: String
     let imageURL: String
@@ -67,7 +69,7 @@ struct PromoCatalogItem: CatalogItemProtocol {
 }
 
 struct BigPromoCatalogItem: CatalogItemProtocol {
-    let id: String
+    var id: String
     let title: String
     let imageURL: String
 }

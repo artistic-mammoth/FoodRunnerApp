@@ -22,8 +22,15 @@ final class HomePresenter {
 
 // MARK: - HomePresenterProtocol
 extension HomePresenter: HomePresenterProtocol {
-    func didSelectItem(_ data: CatalogSectionType) {
-        router.openCatalogView(data)
+    func didSelectItem(id: String, type: CatalogSectionType) {
+        switch type {
+        case .category:
+            router.openCatalogView(type)
+        case .promo:
+            router.openProductView(id: id)
+        case .bigPromo:
+            router.openCatalogView(type)
+        }
     }
     
     func viewDidLoaded() {

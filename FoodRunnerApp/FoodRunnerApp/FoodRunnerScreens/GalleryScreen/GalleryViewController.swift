@@ -11,14 +11,15 @@ final class GalleryViewController: UIViewController {
     // MARK: - Public properties
     var presenter: GalleryPresenterProtocol?
     
+    // MARK: - Init
+    @available (*, unavailable)
+    required init?(coder: NSCoder) { nil }
+    
     init(color: UIColor) {
         super.init(nibName: nil, bundle: nil)
         self.view.backgroundColor = color
     }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+
 }
 
 extension GalleryViewController: GalleryViewProtocol {

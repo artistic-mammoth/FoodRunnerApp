@@ -12,6 +12,7 @@ final class ProductRouter {
     weak var viewController: ProductViewController?
 }
 
+// MARK: - ProductRouterProtocol
 extension ProductRouter: ProductRouterProtocol {
     
 }

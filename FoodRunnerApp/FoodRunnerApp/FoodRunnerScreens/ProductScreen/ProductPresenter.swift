@@ -20,9 +20,14 @@ final class ProductPresenter {
     }
 }
 
+// MARK: - ProductPresenterProtocol
 extension ProductPresenter: ProductPresenterProtocol {
-    func viewDidLoaded() {
-        
+    func viewDidLoaded(id: String) {
+        interactor.getProductBy(id: id) { data in
+            DispatchQueue.main.async { [weak self] in
+                self?.view?.setupProduct(name: data.name, description: data.description, price: data.price, images: data.imageURLsSet)
+            }
+        }
     }
-    
+
 }
