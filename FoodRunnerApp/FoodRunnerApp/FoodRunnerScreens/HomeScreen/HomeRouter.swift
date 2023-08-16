@@ -16,16 +16,19 @@ final class HomeRouter {
 extension HomeRouter: HomeRouterProtocol {
     func openCatalogView(_ data: CatalogSectionType) {
         // TODO: Remove mockup VC
-        let vc = MockViewController()
-        
         switch data {
-        case .category: vc.view.backgroundColor = UIColor(hexString: "adc178")
-        case .promo: vc.view.backgroundColor = UIColor(hexString: "bbd0ff")
-        case .bigPromo: vc.view.backgroundColor = UIColor(hexString: "40798c")
+        case .category:
+            let vc = GalleryModuleBuilder.build(color: .blue)
+            viewController?.navigationController?.pushViewController(vc, animated: true)
+            return
+        case .promo:
+            let vc = ProductModuleBuilder.build(color: .purple)
+            viewController?.navigationController?.pushViewController(vc, animated: true)
+            return
+        case .bigPromo:
+            let vc = UIViewController()
+            viewController?.navigationController?.pushViewController(vc, animated: true)
+            return
         }
-        
-        viewController?.navigationController?.pushViewController(vc, animated: true)
     }
-    
-    
 }

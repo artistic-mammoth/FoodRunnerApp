@@ -91,7 +91,7 @@ final class NetworkService {
                                 imageURLsSet: [],
                                 price: 200)]
             
-//            products.forEach { DataService.shared.addProduct($0) }
+            products.forEach { CacheService.shared.addProductData(data: $0) }
             
             completion(products)
         }

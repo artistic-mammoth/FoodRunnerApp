@@ -29,6 +29,17 @@
 		C74DC6C22A880B35005DDF7A /* Inter-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C74DC6BC2A880B35005DDF7A /* Inter-Light.ttf */; };
 		C74DC6C42A880BB6005DDF7A /* FontsRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74DC6C32A880BB6005DDF7A /* FontsRes.swift */; };
 		C74DC6C62A880DCB005DDF7A /* MockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74DC6C52A880DCA005DDF7A /* MockViewController.swift */; };
+		C77055272A8CEADE00286F8E /* GalleryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77055262A8CEADE00286F8E /* GalleryPresenter.swift */; };
+		C77055292A8CEAF500286F8E /* GalleryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77055282A8CEAF500286F8E /* GalleryInteractor.swift */; };
+		C770552B2A8CEB0800286F8E /* GalleryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C770552A2A8CEB0800286F8E /* GalleryRouter.swift */; };
+		C770552D2A8CEB1A00286F8E /* GalleryScreenProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = C770552C2A8CEB1A00286F8E /* GalleryScreenProtocols.swift */; };
+		C770552F2A8CEB2900286F8E /* GalleryModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C770552E2A8CEB2900286F8E /* GalleryModuleBuilder.swift */; };
+		C770553E2A8CEF1E00286F8E /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C770553D2A8CEF1E00286F8E /* ProductViewController.swift */; };
+		C77055402A8CEF3B00286F8E /* ProductPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C770553F2A8CEF3B00286F8E /* ProductPresenter.swift */; };
+		C77055422A8CEF5000286F8E /* ProductInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77055412A8CEF5000286F8E /* ProductInteractor.swift */; };
+		C77055442A8CEF6400286F8E /* ProductRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77055432A8CEF6400286F8E /* ProductRouter.swift */; };
+		C77055462A8CEF7600286F8E /* ProductScreenProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77055452A8CEF7600286F8E /* ProductScreenProtocols.swift */; };
+		C77055482A8CEF8100286F8E /* ProductModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77055472A8CEF8100286F8E /* ProductModuleBuilder.swift */; };
 		C7A88AD82A8AB85700A24038 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A88AD72A8AB85700A24038 /* DataService.swift */; };
 		C7B314F22A88EBC800387390 /* HomeCatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B314F12A88EBC800387390 /* HomeCatalogView.swift */; };
 		C7B314F42A88FEC400387390 /* CompositionalLayoutConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B314F32A88FEC400387390 /* CompositionalLayoutConfigurator.swift */; };
@@ -91,6 +102,17 @@
 		C74DC6BC2A880B35005DDF7A /* Inter-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Light.ttf"; sourceTree = "<group>"; };
 		C74DC6C32A880BB6005DDF7A /* FontsRes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontsRes.swift; sourceTree = "<group>"; };
 		C74DC6C52A880DCA005DDF7A /* MockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockViewController.swift; sourceTree = "<group>"; };
+		C77055262A8CEADE00286F8E /* GalleryPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryPresenter.swift; sourceTree = "<group>"; };
+		C77055282A8CEAF500286F8E /* GalleryInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryInteractor.swift; sourceTree = "<group>"; };
+		C770552A2A8CEB0800286F8E /* GalleryRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryRouter.swift; sourceTree = "<group>"; };
+		C770552C2A8CEB1A00286F8E /* GalleryScreenProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryScreenProtocols.swift; sourceTree = "<group>"; };
+		C770552E2A8CEB2900286F8E /* GalleryModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryModuleBuilder.swift; sourceTree = "<group>"; };
+		C770553D2A8CEF1E00286F8E /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
+		C770553F2A8CEF3B00286F8E /* ProductPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductPresenter.swift; sourceTree = "<group>"; };
+		C77055412A8CEF5000286F8E /* ProductInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInteractor.swift; sourceTree = "<group>"; };
+		C77055432A8CEF6400286F8E /* ProductRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRouter.swift; sourceTree = "<group>"; };
+		C77055452A8CEF7600286F8E /* ProductScreenProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductScreenProtocols.swift; sourceTree = "<group>"; };
+		C77055472A8CEF8100286F8E /* ProductModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModuleBuilder.swift; sourceTree = "<group>"; };
 		C7A88AD72A8AB85700A24038 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		C7B314F12A88EBC800387390 /* HomeCatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCatalogView.swift; sourceTree = "<group>"; };
 		C7B314F32A88FEC400387390 /* CompositionalLayoutConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionalLayoutConfigurator.swift; sourceTree = "<group>"; };
@@ -301,6 +323,19 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		C77055302A8CEE5A00286F8E /* ProductScreen */ = {
+			isa = PBXGroup;
+			children = (
+				C770553D2A8CEF1E00286F8E /* ProductViewController.swift */,
+				C770553F2A8CEF3B00286F8E /* ProductPresenter.swift */,
+				C77055412A8CEF5000286F8E /* ProductInteractor.swift */,
+				C77055432A8CEF6400286F8E /* ProductRouter.swift */,
+				C77055452A8CEF7600286F8E /* ProductScreenProtocols.swift */,
+				C77055472A8CEF8100286F8E /* ProductModuleBuilder.swift */,
+			);
+			path = ProductScreen;
+			sourceTree = "<group>";
+		};
 		C7B314F72A89015E00387390 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -346,6 +381,11 @@
 			children = (
 				C7D54E382A8A3DEF009CBB63 /* GalleryViews */,
 				C7D54E392A8A3E35009CBB63 /* GalleryViewController.swift */,
+				C77055262A8CEADE00286F8E /* GalleryPresenter.swift */,
+				C77055282A8CEAF500286F8E /* GalleryInteractor.swift */,
+				C770552A2A8CEB0800286F8E /* GalleryRouter.swift */,
+				C770552C2A8CEB1A00286F8E /* GalleryScreenProtocols.swift */,
+				C770552E2A8CEB2900286F8E /* GalleryModuleBuilder.swift */,
 			);
 			path = GalleryScreen;
 			sourceTree = "<group>";
@@ -362,6 +402,7 @@
 			children = (
 				C7D54E352A8A3D67009CBB63 /* HomeScreen */,
 				C7D54E372A8A3DC8009CBB63 /* GalleryScreen */,
+				C77055302A8CEE5A00286F8E /* ProductScreen */,
 			);
 			path = FoodRunnerScreens;
 			sourceTree = "<group>";
@@ -504,7 +545,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C74DC66C2A87EA2E005DDF7A /* AppDelegate.swift in Sources */,
+				C770552F2A8CEB2900286F8E /* GalleryModuleBuilder.swift in Sources */,
 				C74DC6C42A880BB6005DDF7A /* FontsRes.swift in Sources */,
+				C770552D2A8CEB1A00286F8E /* GalleryScreenProtocols.swift in Sources */,
 				C74DC6AF2A87F8B0005DDF7A /* CatalogCategoryHeaderReusableView.swift in Sources */,
 				C724BD6F2A8C16EF00257B45 /* APIURLs.swift in Sources */,
 				C7D54E452A8A5933009CBB63 /* HomeModuleBuilder.swift in Sources */,
@@ -512,6 +555,8 @@
 				C7A88AD82A8AB85700A24038 /* DataService.swift in Sources */,
 				C7FA64C82A8CD46B0079099E /* CacheService.swift in Sources */,
 				C74DC6C62A880DCB005DDF7A /* MockViewController.swift in Sources */,
+				C770552B2A8CEB0800286F8E /* GalleryRouter.swift in Sources */,
+				C77055422A8CEF5000286F8E /* ProductInteractor.swift in Sources */,
 				C74DC6B52A8809F7005DDF7A /* UIColor+hexString.swift in Sources */,
 				C7D54E412A8A58E5009CBB63 /* HomeInteractor.swift in Sources */,
 				C7054B812A88278700E4E23E /* BigPromoCell.swift in Sources */,
@@ -522,12 +567,19 @@
 				C74DC6A52A87EC96005DDF7A /* HomeViewController.swift in Sources */,
 				C74DC6B12A8805D1005DDF7A /* CatalogData.swift in Sources */,
 				C7B314F62A89003F00387390 /* UIView+addViews.swift in Sources */,
+				C770553E2A8CEF1E00286F8E /* ProductViewController.swift in Sources */,
 				C7B314F42A88FEC400387390 /* CompositionalLayoutConfigurator.swift in Sources */,
+				C77055462A8CEF7600286F8E /* ProductScreenProtocols.swift in Sources */,
 				C74DC6A92A87F159005DDF7A /* CategoryCell.swift in Sources */,
+				C77055442A8CEF6400286F8E /* ProductRouter.swift in Sources */,
+				C77055482A8CEF8100286F8E /* ProductModuleBuilder.swift in Sources */,
+				C77055292A8CEAF500286F8E /* GalleryInteractor.swift in Sources */,
+				C77055402A8CEF3B00286F8E /* ProductPresenter.swift in Sources */,
 				C7D54E3C2A8A4FF8009CBB63 /* HomeScreenProtocols.swift in Sources */,
 				C7D54E3A2A8A3E35009CBB63 /* GalleryViewController.swift in Sources */,
 				C7B314F92A892C7F00387390 /* ProductsData.swift in Sources */,
 				C7D5F3BC2A88184D000E4A06 /* PromoCell.swift in Sources */,
+				C77055272A8CEADE00286F8E /* GalleryPresenter.swift in Sources */,
 				C7D54E432A8A5910009CBB63 /* HomeRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

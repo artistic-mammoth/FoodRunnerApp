@@ -1,15 +1,15 @@
 //
-//  GalleryViewController.swift
+//  ProductViewController.swift
 //  FoodRunnerApp
 //
-//  Created by Михайлов Александр on 14.08.2023.
+//  Created by Михайлов Александр on 16.08.2023.
 //
 
 import UIKit
 
-final class GalleryViewController: UIViewController {
+final class ProductViewController: UIViewController {
     // MARK: - Public properties
-    var presenter: GalleryPresenterProtocol?
+    var presenter: ProductPresenterProtocol?
     
     init(color: UIColor) {
         super.init(nibName: nil, bundle: nil)
@@ -21,6 +21,6 @@ final class GalleryViewController: UIViewController {
     }
 }
 
-extension GalleryViewController: GalleryViewProtocol {
+extension ProductViewController: ProductViewProtocol {
     
 }
