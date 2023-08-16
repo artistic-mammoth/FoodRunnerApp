@@ -14,7 +14,7 @@ final class NetworkService {
     
     // MARK: - Public methods
     func getBigPromos(completion: @escaping (([BigPromoData]?) -> Void)) {
-        guard let url = URL(string: APIURLs.bigPromos, relativeTo: URL(string: APIURLs.mainURL)) else { print("Bad URL"); return }
+        guard let url = URL(string: APIURLs.bigPromos, relativeTo: URL(string: APIURLs.mainURL)) else { print("Invalid URL"); return }
 
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -38,17 +38,26 @@ final class NetworkService {
         task.resume()
     }
     
-    func fetchImage(from url: String, completion: @escaping (_ imageData: Data?) -> ()) {
-        guard let url = URL(string: url) else { return }
+    func fetchImage(from urlString: String, completion: @escaping (_ imageData: Data?) -> ()) {
+        guard let url = URL(string: urlString) else { print("Invalid URL: \(urlString)"); return }
+        
+        if let cachedData = CacheService.shared.getData(url: urlString) {
+            completion(cachedData)
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
 
         // TODO: - USE CASHE
-        let dataTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
+        let dataTask = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data, error == nil else {
                 print(error?.localizedDescription ?? "No data")
                 completion(nil)
                 return
             }
 
+            CacheService.shared.addData(url: urlString, data: data)
             completion(data)
         }
 

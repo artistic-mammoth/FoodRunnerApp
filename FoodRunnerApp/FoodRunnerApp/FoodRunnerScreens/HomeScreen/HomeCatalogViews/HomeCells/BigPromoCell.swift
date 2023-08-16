@@ -51,13 +51,23 @@ class BigPromoCell: UICollectionViewCell {
     
     // MARK: - Public methods
     func configureWith(label: String, imageURL: String) {
-        title.text = label
+        image.image = nil
+        gradientSubstrate.isHidden = true
+        
+        let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView.init(style: .medium)
+        addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        activityIndicator.center = self.center
+        activityIndicator.frame = self.bounds
         
         NetworkService.shared.fetchImage(from: imageURL) { [weak self] imageData in
             DispatchQueue.main.async {
                 if let imageData = imageData {
                     let image = UIImage(data: imageData)
+                    activityIndicator.removeFromSuperview()
                     self?.image.image = image
+                    self?.gradientSubstrate.isHidden = false
+                    self?.title.text = label
                 }
             }
         }
@@ -68,9 +78,10 @@ class BigPromoCell: UICollectionViewCell {
         addViews([image, title])
         layer.insertSublayer(gradientSubstrate, at: 1)
         
-        backgroundColor = .gray
+        backgroundColor = .systemGray6
         layer.cornerRadius = 13
         clipsToBounds = true
+        gradientSubstrate.isHidden = true
 
         NSLayoutConstraint.activate([
             title.topAnchor.constraint(equalTo: topAnchor, constant: 7),

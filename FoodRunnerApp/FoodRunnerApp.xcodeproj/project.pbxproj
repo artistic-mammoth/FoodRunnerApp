@@ -44,6 +44,7 @@
 		C7D54E452A8A5933009CBB63 /* HomeModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D54E442A8A5933009CBB63 /* HomeModuleBuilder.swift */; };
 		C7D54E482A8A797A009CBB63 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D54E472A8A797A009CBB63 /* NetworkService.swift */; };
 		C7D5F3BC2A88184D000E4A06 /* PromoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D5F3BB2A88184D000E4A06 /* PromoCell.swift */; };
+		C7FA64C82A8CD46B0079099E /* CacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FA64C72A8CD46B0079099E /* CacheService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,7 @@
 		C7D54E442A8A5933009CBB63 /* HomeModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModuleBuilder.swift; sourceTree = "<group>"; };
 		C7D54E472A8A797A009CBB63 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		C7D5F3BB2A88184D000E4A06 /* PromoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoCell.swift; sourceTree = "<group>"; };
+		C7FA64C72A8CD46B0079099E /* CacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,6 +265,7 @@
 			children = (
 				C7D54E472A8A797A009CBB63 /* NetworkService.swift */,
 				C7A88AD72A8AB85700A24038 /* DataService.swift */,
+				C7FA64C72A8CD46B0079099E /* CacheService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 				C7D54E452A8A5933009CBB63 /* HomeModuleBuilder.swift in Sources */,
 				C7D54E3F2A8A5883009CBB63 /* HomePresenter.swift in Sources */,
 				C7A88AD82A8AB85700A24038 /* DataService.swift in Sources */,
+				C7FA64C82A8CD46B0079099E /* CacheService.swift in Sources */,
 				C74DC6C62A880DCB005DDF7A /* MockViewController.swift in Sources */,
 				C74DC6B52A8809F7005DDF7A /* UIColor+hexString.swift in Sources */,
 				C7D54E412A8A58E5009CBB63 /* HomeInteractor.swift in Sources */,
