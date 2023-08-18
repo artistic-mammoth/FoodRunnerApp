@@ -59,14 +59,33 @@ class PromoCell: UICollectionViewCell {
     
     // MARK: - Public methods
     func configureWith(name: String, description: String, price: Int, imageURL: String) {
-        nameLabel.text = name
-        descriptionLabel.text = description
-        priceLabel.text = "\(price) ₽"
+        imageView.image = nil
+        substrateView.isHidden = true
         
-        if imageURL != "" {
-            imageView.image = UIImage(named: imageURL)
-        } else {
-            imageView.image = UIImage(systemName: "cart.circle.fill")
+        let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView.init(style: .medium)
+        addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        activityIndicator.center = self.center
+        activityIndicator.frame = self.bounds
+        
+        NetworkService.shared.fetchImage(from: imageURL) { [weak self] imageData in
+            DispatchQueue.main.async {
+                if let imageData = imageData {
+                    let image = UIImage(data: imageData)
+                    activityIndicator.removeFromSuperview()
+                    self?.imageView.image = image
+                    self?.substrateView.isHidden = false
+                    self?.descriptionLabel.text = description
+                    self?.nameLabel.text = name
+                    self?.priceLabel.text = "\(price) ₽"
+                } else {
+                    activityIndicator.removeFromSuperview()
+                    self?.substrateView.isHidden = false
+                    self?.descriptionLabel.text = description
+                    self?.nameLabel.text = name
+                    self?.priceLabel.text = "\(price) ₽"
+                }
+            }
         }
     }
 

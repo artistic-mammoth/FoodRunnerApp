@@ -15,8 +15,9 @@ final class HomeInteractor {
 
 // MARK: - HomeInteractorProtocol
 extension HomeInteractor: HomeInteractorProtocol {
-    func loadPromoData(completion: @escaping ([BigPromoData]?, [ProductData]?, [ProductData]?) -> Void) {
+    func loadPromoData(completion: @escaping ([BigPromoData]?, [ProductData]?, [ProductData]?) -> Void) {        
         let group = DispatchGroup()
+        let myQueue = DispatchQueue(label: "myQueue", qos: .userInteractive)
         
         var bigPromo: [BigPromoData]?
         var firstPromo: [ProductData]?
@@ -31,21 +32,39 @@ extension HomeInteractor: HomeInteractorProtocol {
         }
         
         group.enter()
-        NetworkService.shared.getFirstPromos { data in
-            if let data = data {
-                firstPromo = data
+        NetworkService.shared.getPromosIDs { firstPromoIds, secondPromoIDs in
+            guard let firstPromoIds = firstPromoIds, let secondPromoIDs = secondPromoIDs else { group.leave(); return }
+            let localGroup = DispatchGroup()
+            myQueue.sync {
+                firstPromo = []
+                secondPromo = []
             }
-            group.leave()
-        }
-        
-        group.enter()
-        NetworkService.shared.getSecondPromos { data in
-            if let data = data {
-                secondPromo = data
+            
+            for item in firstPromoIds {
+                localGroup.enter()
+                DataService.shared.getProductBy(id: item) { product in
+                    myQueue.sync {
+                        firstPromo?.append(product)
+                        localGroup.leave()
+                    }
+                }
             }
-            group.leave()
+            
+            for item in secondPromoIDs {
+                localGroup.enter()
+                DataService.shared.getProductBy(id: item) { product in
+                    myQueue.sync {
+                        secondPromo?.append(product)
+                        localGroup.leave()
+                    }
+                }
+            }
+            
+            localGroup.notify(queue: .main) {
+                group.leave()
+            }
         }
-        
+
         group.notify(queue: .main) {
             completion(bigPromo, firstPromo, secondPromo)
         }

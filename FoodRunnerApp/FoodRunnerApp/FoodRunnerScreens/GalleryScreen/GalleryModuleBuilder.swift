@@ -8,11 +8,11 @@
 import UIKit
 
 final class GalleryModuleBuilder {
-    static func build(color: UIColor) -> GalleryViewController {
+    static func build(categoryID: String) -> GalleryViewController {
         let interactor = GalleryInteractor()
         let router = GalleryRouter()
         let presenter = GalleryPresenter(router: router, interactor: interactor)
-        let viewController = GalleryViewController(color: color)
+        let viewController = GalleryViewController(categoryID: categoryID)
         interactor.presenter = presenter
         router.viewController = viewController
         presenter.view = viewController

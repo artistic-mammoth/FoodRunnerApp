@@ -12,6 +12,7 @@ final class GalleryInteractor {
     weak var presenter: GalleryPresenterProtocol?
 }
 
+// MARK: - GalleryInteractorProtocol
 extension GalleryInteractor: GalleryInteractorProtocol {
     
 }

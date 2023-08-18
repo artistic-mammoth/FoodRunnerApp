@@ -15,7 +15,8 @@ final class ProductInteractor {
 // MARK: - ProductInteractorProtocol
 extension ProductInteractor: ProductInteractorProtocol {
     func getProductBy(id: String, completion: @escaping ((ProductData) -> Void)) {
-        let product = DataService.shared.getProductBy(id: id)
-        completion(product)
+        DataService.shared.getProductBy(id: id) { product in
+            completion(product)
+        }
     }
 }

@@ -19,6 +19,6 @@ protocol HomeInteractorProtocol: AnyObject {
 }
 
 protocol HomeRouterProtocol: AnyObject {
-    func openCatalogView(_ data: CatalogSectionType)
+    func openCatalogView(id: String)
     func openProductView(id: String)
 }

@@ -25,11 +25,11 @@ extension HomePresenter: HomePresenterProtocol {
     func didSelectItem(id: String, type: CatalogSectionType) {
         switch type {
         case .category:
-            router.openCatalogView(type)
+            router.openCatalogView(id: id)
         case .promo:
             router.openProductView(id: id)
         case .bigPromo:
-            router.openCatalogView(type)
+            return
         }
     }
     
@@ -55,48 +55,49 @@ private extension HomePresenter {
         }
         
         if let firstPromos = firstPromos {
-            let firstPromoItems: [PromoCatalogItem] = firstPromos.map({ PromoCatalogItem(id: $0.id, name: $0.name, description: $0.description, imageURL: $0.imageURLsSet.first ?? "", price: $0.price) })
+            let firstPromoItems: [PromoCatalogItem] = firstPromos.map({ PromoCatalogItem(id: $0.id, name: $0.name, description: $0.ammount, imageURL: $0.imageURLsSet.first ?? "", price: $0.price) })
             firstPromo = CatalogSection(id: "promo-first", type: .promo, headerTitle: "Может быть интересно", items: firstPromoItems)
         }
         
         if let secondPromos = secondPromos {
-            let secondPromoItems: [PromoCatalogItem] = secondPromos.map({ PromoCatalogItem(id: $0.id, name: $0.name, description: $0.description, imageURL: $0.imageURLsSet.first ?? "", price: $0.price) })
+            let secondPromoItems: [PromoCatalogItem] = secondPromos.map({ PromoCatalogItem(id: $0.id, name: $0.name, description: $0.ammount, imageURL: $0.imageURLsSet.first ?? "", price: $0.price) })
             secondPromo = CatalogSection(id: "promo-second", type: .promo, headerTitle: "Еще больше интересного", items: secondPromoItems)
         }
         
         let allCategories: [CatalogSection?] = [
             bigPromo,
-            .init(id: "baking", type: .category, headerTitle: "Выпечка", themeColor: UIColor(hexString: "F4A261"), items: [
-                CategoryCatalogItem(id: "bread", title: "Хлеб", imageURL: "bag"),
-                CategoryCatalogItem(id: "pastry", title: "Выпечка", imageURL: "bag"),
-                CategoryCatalogItem(id: "breads", title: "Хлебцы", imageURL: "bag")
-            ]),
-            .init(id: "dairy", type: .category, headerTitle: "Молочное", themeColor: UIColor(hexString: "BDE0FE"), items: [
-                CategoryCatalogItem(id: "milk", title: "Молоко", imageURL: "bag"),
-                CategoryCatalogItem(id: "cheese", title: "Сыр", imageURL: "bag"),
-                CategoryCatalogItem(id: "yogurts", title: "Йогурты", imageURL: "bag"),
-                CategoryCatalogItem(id: "butter", title: "Масло", imageURL: "bag"),
-                CategoryCatalogItem(id: "eggs", title: "Яйца", imageURL: "bag")
-            ]),
+            setupCategorySection(id: "baking"),
+            setupCategorySection(id: "dairy"),
             firstPromo,
-            .init(id: "vegetables-and-fruits", type: .category, headerTitle: "Овощи и фрукты", themeColor: UIColor(hexString: "adc178"), items: [
-                CategoryCatalogItem(id: "", title: "Овощи и зелень", imageURL: "bag"),
-                CategoryCatalogItem(id: "", title: "Фрукты и ягоды", imageURL: "bag"),
-            ]),
-            .init(id: "meat-and-fish", type: .category, headerTitle: "Мясо и рыба", themeColor: UIColor(hexString: "f08080"), items: [
-                CategoryCatalogItem(id: "", title: "Мясо", imageURL: "bag"),
-                CategoryCatalogItem(id: "", title: "Рыба", imageURL: "bag"),
-                CategoryCatalogItem(id: "", title: "Колбаса и сосиски", imageURL: "bag"),
-            ]),
+            setupCategorySection(id: "vegetables-and-fruits"),
+            setupCategorySection(id: "meat-and-fish"),
             secondPromo,
-            .init(id: "sweets-and-snacks", type: .category, headerTitle: "Сладкое и снеки", themeColor: UIColor(hexString: "ffecd1"), items: [
-                CategoryCatalogItem(id: "", title: "Вафли и печенье", imageURL: "bag"),
-                CategoryCatalogItem(id: "", title: "Сухофрукты и орехи", imageURL: "bag"),
-                CategoryCatalogItem(id: "", title: "Шоколад и конфеты", imageURL: "bag"),
-                CategoryCatalogItem(id: "", title: "Чипсы и снэки", imageURL: "bag"),
-            ]),
+            setupCategorySection(id: "sweets-and-snacks"),
         ]
         
         return allCategories.compactMap({ $0 })
+    }
+    
+    func setupCategorySection(id: String) -> CatalogSection? {
+        let title = CatalogRes.getCategoryNameBy(id: id)
+        guard let title = title else { return nil }
+
+        let color = CatalogRes.getCategoryColorBy(id: id)
+        let subcategoryNames = CatalogRes.getSubCategoriesBy(id: id)
+        guard let subcategoryNames = subcategoryNames else { return nil }
+        var items: [CategoryCatalogItem] = []
+        
+        for name in subcategoryNames {
+            let title = CatalogRes.getCategoryNameBy(id: name)
+            // TODO: - Use real url for category
+            let imageURL = "bag"
+            guard let title = title else { return nil }
+            let item = CategoryCatalogItem(id: name, title: title, imageURL: imageURL)
+            items.append(item)
+        }
+        
+        let categorySection = CatalogSection(id: id, type: .category, headerTitle: title, themeColor: color, items: items)
+        
+        return categorySection
     }
 }

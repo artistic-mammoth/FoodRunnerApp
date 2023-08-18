@@ -14,20 +14,9 @@ final class HomeRouter {
 
 // MARK: - HomeRouterProtocol
 extension HomeRouter: HomeRouterProtocol {
-    func openCatalogView(_ data: CatalogSectionType) {
-        // TODO: Remove mockup VC
-        switch data {
-        case .category:
-            let vc = GalleryModuleBuilder.build(color: .blue)
-            viewController?.navigationController?.pushViewController(vc, animated: true)
-            return
-        case .bigPromo:
-            let vc = UIViewController()
-            viewController?.navigationController?.pushViewController(vc, animated: true)
-            return
-        default:
-            return
-        }
+    func openCatalogView(id: String) {
+        let vc = GalleryModuleBuilder.build(categoryID: id)
+        viewController?.navigationController?.pushViewController(vc, animated: true)
     }
     
     func openProductView(id: String) {

@@ -6,7 +6,7 @@
 //
 
 protocol ProductViewProtocol: AnyObject {
-    func setupProduct(name: String, description: String, price: Int, images: ProductImageURLsSet)
+    func setupProduct(name: String, description: String, price: Int, images: [String])
 }
 
 protocol ProductPresenterProtocol: AnyObject {

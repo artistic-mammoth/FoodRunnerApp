@@ -20,8 +20,9 @@ final class GalleryPresenter {
     }
 }
 
+// MARK: - GalleryPresenterProtocol
 extension GalleryPresenter: GalleryPresenterProtocol {
-    func viewDidLoaded() {
+    func viewDidLoaded(categoryID: String) {
         
     }
     

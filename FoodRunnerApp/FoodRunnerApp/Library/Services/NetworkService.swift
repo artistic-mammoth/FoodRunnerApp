@@ -14,7 +14,7 @@ final class NetworkService {
     
     // MARK: - Public methods
     func getBigPromos(completion: @escaping (([BigPromoData]?) -> Void)) {
-        guard let url = URL(string: APIURLs.bigPromos, relativeTo: URL(string: APIURLs.mainURL)) else { print("Invalid URL"); return }
+        guard let url = URL(string: APIURLs.bigPromos, relativeTo: URL(string: APIURLs.mainURL)) else { completion(nil); return }
 
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -39,7 +39,7 @@ final class NetworkService {
     }
     
     func fetchImage(from urlString: String, completion: @escaping (_ imageData: Data?) -> ()) {
-        guard let url = URL(string: urlString) else { print("Invalid URL: \(urlString)"); return }
+        guard let url = URL(string: urlString) else { completion(nil); return }
         
         if let cachedData = CacheService.shared.getData(url: urlString) {
             completion(cachedData)
@@ -63,69 +63,73 @@ final class NetworkService {
         dataTask.resume()
     }
     
-    func getFirstPromos(completion: @escaping (([ProductData]?) -> Void)) {
-        DispatchQueue.global(qos: .userInteractive).asyncAfter(deadline: .now()+0.1) {
-            let products = [ProductData(
-                id: "product_1",
-                name: "Молоко Суперское",
-                description: "900 мл",
-                imageURLsSet: ["https://www.dropbox.com/scl/fi/ysbghpit8mmkraa0jewdp/promo_1.jpg?rlkey=rcxw9zdq0shccd7ogo0vdf3le&dl=1"],
-                price: 79),
-                            ProductData(
-                                id: "product_2",
-                                name: "Коровки няшные",
-                                description: "5 шт",
-                                imageURLsSet: ["promo_1"],
-                                price: 110),
-                            ProductData(
-                                id: "product_3",
-                                name: "Альтернативное молоко с тем же лого",
-                                description: "750 мл",
-                                imageURLsSet: ["promo_1"],
-                                price: 340),
-                            ProductData(
-                                id: "product_4",
-                                name: "Куча конфет без фото",
-                                description: "куча",
-                                imageURLsSet: [],
-                                price: 200)]
+    func getPromosIDs(completion: @escaping (([String]?, [String]?) -> Void)) {
+        guard let url = URL(string: APIURLs.promos, relativeTo: URL(string: APIURLs.mainURL)) else { completion(nil, nil); return }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print(error?.localizedDescription ?? "No data")
+                completion(nil, nil)
+                return
+            }
             
-            products.forEach { DataService.shared.addProduct($0) }
+            if let dataJSON = try? JSONDecoder().decode(PromoDataResponse.self, from: data) {
+                let firstPromos = dataJSON.firstPromosIDs
+                let secondPromos = dataJSON.secondPromosIDs
+                completion(firstPromos, secondPromos)
+            }
+        }
+        
+        task.resume()
+    }
+    
+    func loadProductBy(id: String, tag: String = "", completion: @escaping ((ProductData?) -> Void)) {
+        
+        if let cachedProduct = CacheService.shared.getProductData(id: id) {
+            completion(cachedProduct)
+        }
+        
+        // TODO: - actually request API for only one product data!
+        loadProducts { isDone in
+            guard isDone else { completion(nil); return }
             
-            completion(products)
+            if let cachedProduct = CacheService.shared.getProductData(id: id) {
+                completion(cachedProduct)
+            } else {
+                completion(nil)
+            }
         }
     }
     
-    func getSecondPromos(completion: @escaping (([ProductData]?) -> Void)) {
-        DispatchQueue.global(qos: .userInteractive).asyncAfter(deadline: .now()+0.1) {
-            let products = [ProductData(
-                id: "product_1",
-                name: "Молоко Суперское",
-                description: "900 мл",
-                imageURLsSet: ["promo_1", "face.smiling"],
-                price: 79),
-                            ProductData(
-                                id: "2",
-                                name: "Коровки няшные",
-                                description: "5 шт",
-                                imageURLsSet: ["promo_1"],
-                                price: 110),
-                            ProductData(
-                                id: "3",
-                                name: "Альтернативное молоко с тем же лого",
-                                description: "750 мл",
-                                imageURLsSet: ["promo_1"],
-                                price: 340),
-                            ProductData(
-                                id: "4",
-                                name: "Куча конфет без фото",
-                                description: "куча",
-                                imageURLsSet: [],
-                                price: 200)]
+}
+
+// MARK: - Private extension
+private extension NetworkService {
+    func loadProducts(for tag: String = "", completion: @escaping ((Bool) -> Void)) {
+        guard let url = URL(string: APIURLs.productsTagFirstPack, relativeTo: URL(string: APIURLs.mainURL)) else { completion(false); return }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print(error?.localizedDescription ?? "No data")
+                completion(false)
+                return
+            }
             
-            //            products.forEach { DataService.shared.addProduct($0) }
-            
-            completion(products)
+            if let dataJSON = try? JSONDecoder().decode(ProductDataResponse.self, from: data) {
+                let products = dataJSON.productData.map({ ProductData(id: $0.id, name: $0.name, ammount: $0.ammount, description: $0.description, imageURLsSet: $0.imageURLsSet, price: $0.price) })
+                
+                products.forEach { DataService.shared.addProduct($0) }
+
+                completion(true)
+            }
         }
+        
+        task.resume()
     }
 }

@@ -74,7 +74,7 @@ final class ProductViewController: UIViewController {
 
 // MARK: - ProductViewProtocol
 extension ProductViewController: ProductViewProtocol {
-    func setupProduct(name: String, description: String, price: Int, images: ProductImageURLsSet) {
+    func setupProduct(name: String, description: String, price: Int, images: [String]) {
         titleLabel.text = name
         descriptionLabel.text = description
         priceLabel.text = "\(price) ₽"
@@ -85,7 +85,11 @@ extension ProductViewController: ProductViewProtocol {
         activityIndicator.center = mainImage.center
         activityIndicator.frame = mainImage.bounds
         
-        guard let firstImageURL: String = images.first else { print("Wrong First image \(images)"); return }
+        guard let firstImageURL: String = images.first else {
+            activityIndicator.removeFromSuperview()
+            print("Wrong First image \(images)")
+            return
+        }
         
         NetworkService.shared.fetchImage(from: firstImageURL) { [weak self] imageData in
             DispatchQueue.main.async {
@@ -118,7 +122,7 @@ private extension ProductViewController {
         mainImage.clipsToBounds = true
         
         NSLayoutConstraint.activate([
-            mainImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            mainImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             mainImage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             mainImage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
             mainImage.heightAnchor.constraint(equalToConstant: view.bounds.width - 20),
