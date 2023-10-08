@@ -21,10 +21,10 @@ class BigPromoCell: UICollectionViewCell {
         return $0
     }(UILabel())
     
-    private lazy var image: UIImageView = {
+    private lazy var image: LazyImageView = {
         $0.contentMode = .scaleAspectFill
        return $0
-    }(UIImageView())
+    }(LazyImageView())
     
     private lazy var gradientSubstrate: CAGradientLayer = {
         $0.colors = [UIColor(hexString: "222831").cgColor, UIColor.clear.cgColor]
@@ -54,23 +54,11 @@ class BigPromoCell: UICollectionViewCell {
         image.image = nil
         gradientSubstrate.isHidden = true
         
-        let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView.init(style: .medium)
-        addSubview(activityIndicator)
-        activityIndicator.startAnimating()
-        activityIndicator.center = self.center
-        activityIndicator.frame = self.bounds
+        title.text = label
         
-        NetworkService.shared.fetchImage(from: imageURL) { [weak self] imageData in
-            DispatchQueue.main.async {
-                if let imageData = imageData {
-                    let image = UIImage(data: imageData)
-                    activityIndicator.removeFromSuperview()
-                    self?.image.image = image
-                    self?.gradientSubstrate.isHidden = false
-                    self?.title.text = label
-                }
-            }
-        }
+        image.fetchImage(from: imageURL)
+        // TODO: - gradientSubstrate activity
+        gradientSubstrate.isHidden = false
     }
     
     // MARK: - Private methods

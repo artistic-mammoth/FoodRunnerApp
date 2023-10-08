@@ -10,7 +10,7 @@ protocol GalleryViewProtocol: AnyObject {
 }
 
 protocol GalleryPresenterProtocol: AnyObject {
-    func viewDidLoaded(categoryID: String)
+    func viewDidLoaded(categoryID: CatalogRes)
 }
 
 protocol GalleryInteractorProtocol: AnyObject {

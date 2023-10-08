@@ -12,7 +12,7 @@ final class GalleryViewController: UIViewController {
     var presenter: GalleryPresenterProtocol?
     
     // MARK: - Private properties
-    private var categoryID: String
+    private var categoryID: CatalogRes
     
     // MARK: - Views
     lazy var titleLabel: UILabel = {
@@ -23,11 +23,13 @@ final class GalleryViewController: UIViewController {
         return $0
     }(UILabel())
     
+    private lazy var catalogView = GalleryCollectionView()
+    
     // MARK: - Init
     @available (*, unavailable)
     required init?(coder: NSCoder) { nil }
     
-    init(categoryID: String) {
+    init(categoryID: CatalogRes) {
         self.categoryID = categoryID
         super.init(nibName: nil, bundle: nil)
     }
@@ -56,7 +58,8 @@ private extension GalleryViewController {
         
         view.backgroundColor = .white
         
-        titleLabel.text = CatalogRes.getCategoryNameBy(id: categoryID)
+        // TODO: - Move to presenter
+        titleLabel.text = categoryID.getCategoryName()
 
         
         NSLayoutConstraint.activate([

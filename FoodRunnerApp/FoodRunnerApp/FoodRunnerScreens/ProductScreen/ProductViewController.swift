@@ -15,10 +15,10 @@ final class ProductViewController: UIViewController {
     private var productID: String
     
     // MARK: - Views
-    lazy var mainImage: UIImageView = {
+    lazy var mainImage: LazyImageView = {
         $0.contentMode = .scaleAspectFill
         return $0
-    }(UIImageView())
+    }(LazyImageView())
     
     lazy var titleLabel: UILabel = {
         $0.textColor = .black
@@ -79,34 +79,13 @@ extension ProductViewController: ProductViewProtocol {
         descriptionLabel.text = description
         priceLabel.text = "\(price) ₽"
         
-        let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView.init(style: .medium)
-        mainImage.addSubview(activityIndicator)
-        activityIndicator.startAnimating()
-        activityIndicator.center = mainImage.center
-        activityIndicator.frame = mainImage.bounds
-        
+        // TODO: - refactor get first image url
         guard let firstImageURL: String = images.first else {
-            activityIndicator.removeFromSuperview()
             print("Wrong First image \(images)")
             return
         }
         
-        NetworkService.shared.fetchImage(from: firstImageURL) { [weak self] imageData in
-            DispatchQueue.main.async {
-                if let imageData = imageData {
-                    let image = UIImage(data: imageData)
-                    activityIndicator.removeFromSuperview()
-                    self?.mainImage.image = image
-                } else {
-                    activityIndicator.removeFromSuperview()
-                    // FIXME: - fix big scale of SFSymbol
-                    let config = UIImage.SymbolConfiguration(font: .boldInter(size: 10))
-                    self?.mainImage.image = UIImage(systemName: "face.dashed.fill", withConfiguration: config)
-                    self?.mainImage.tintColor = .black
-                    self?.mainImage.image?.applyingSymbolConfiguration(config)
-                }
-            }
-        }
+        mainImage.fetchImage(from: firstImageURL)
     }
 }
 

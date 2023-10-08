@@ -22,13 +22,13 @@ protocol CatalogItemProtocol {
 
 // MARK: - Catalog section
 struct CatalogSection {
-    let id: String
+    let id: CatalogRes
     let type: CatalogSectionType
     let headerTitle: String
     let themeColor: UIColor
     let items: [CatalogItemProtocol]
     
-    init(id: String, type: CatalogSectionType, headerTitle: String = "", themeColor: UIColor = .clear, items: [CatalogItemProtocol]) {
+    init(id: CatalogRes, type: CatalogSectionType, headerTitle: String = "", themeColor: UIColor = .clear, items: [CatalogItemProtocol]) {
         self.id = id
         self.type = type
         self.headerTitle = headerTitle
@@ -39,13 +39,19 @@ struct CatalogSection {
 
 // MARK: - Catalog items
 struct CategoryCatalogItem: CatalogItemProtocol {
-    var id: String
+    var catalogID: CatalogRes
+    var id: String {
+        get {
+            catalogID.rawValue
+        }
+        set { }
+    }
     let title: String
     let imageURL: String
     let isAvailable: Bool
     
-    init(id: String, title: String, imageURL: String, isAvailable: Bool = true) {
-        self.id = id
+    init(catalogID: CatalogRes, title: String, imageURL: String, isAvailable: Bool = true) {
+        self.catalogID = catalogID
         self.title = title
         self.imageURL = imageURL
         self.isAvailable = isAvailable

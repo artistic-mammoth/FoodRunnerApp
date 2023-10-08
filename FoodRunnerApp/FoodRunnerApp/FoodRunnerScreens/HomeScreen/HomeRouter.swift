@@ -14,7 +14,7 @@ final class HomeRouter {
 
 // MARK: - HomeRouterProtocol
 extension HomeRouter: HomeRouterProtocol {
-    func openCatalogView(id: String) {
+    func openCatalogView(id: CatalogRes) {
         let vc = GalleryModuleBuilder.build(categoryID: id)
         viewController?.navigationController?.pushViewController(vc, animated: true)
     }

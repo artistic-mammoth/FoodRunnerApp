@@ -56,7 +56,16 @@ extension HomeViewController: HomeViewProtocol {
 // MARK: - HomeCatalogViewDelegate
 extension HomeViewController: HomeCatalogViewDelegate {
     func didSelectItem(id: String, type: CatalogSectionType) {
-        presenter?.didSelectItem(id: id, type: type)
+        switch type {
+        case .category:
+            if let catalogID = CatalogRes(rawValue: id) {
+                presenter?.didSelectCategory(id: catalogID)
+            }
+        case .promo:
+            presenter?.didSelectProduct(id: id)
+        case .bigPromo:
+            return
+        }
     }
 
 }

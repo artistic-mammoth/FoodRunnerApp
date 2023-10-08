@@ -35,11 +35,11 @@ class PromoCell: UICollectionViewCell {
         return $0
     }(UILabel())
     
-    private lazy var imageView: UIImageView = {
+    private lazy var imageView: LazyImageView = {
         $0.contentMode = .scaleAspectFill
         $0.tintColor = .gray
        return $0
-    }(UIImageView())
+    }(LazyImageView())
     
     private lazy var substrateView: UIView = {
         $0.backgroundColor = .white
@@ -62,31 +62,12 @@ class PromoCell: UICollectionViewCell {
         imageView.image = nil
         substrateView.isHidden = true
         
-        let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView.init(style: .medium)
-        addSubview(activityIndicator)
-        activityIndicator.startAnimating()
-        activityIndicator.center = self.center
-        activityIndicator.frame = self.bounds
+        descriptionLabel.text = description
+        nameLabel.text = name
+        priceLabel.text = "\(price) ₽"
         
-        NetworkService.shared.fetchImage(from: imageURL) { [weak self] imageData in
-            DispatchQueue.main.async {
-                if let imageData = imageData {
-                    let image = UIImage(data: imageData)
-                    activityIndicator.removeFromSuperview()
-                    self?.imageView.image = image
-                    self?.substrateView.isHidden = false
-                    self?.descriptionLabel.text = description
-                    self?.nameLabel.text = name
-                    self?.priceLabel.text = "\(price) ₽"
-                } else {
-                    activityIndicator.removeFromSuperview()
-                    self?.substrateView.isHidden = false
-                    self?.descriptionLabel.text = description
-                    self?.nameLabel.text = name
-                    self?.priceLabel.text = "\(price) ₽"
-                }
-            }
-        }
+        imageView.fetchImage(from: imageURL)
+        substrateView.isHidden = false
     }
 
     // MARK: - Private methods

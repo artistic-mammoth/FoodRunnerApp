@@ -22,15 +22,12 @@ final class HomePresenter {
 
 // MARK: - HomePresenterProtocol
 extension HomePresenter: HomePresenterProtocol {
-    func didSelectItem(id: String, type: CatalogSectionType) {
-        switch type {
-        case .category:
-            router.openCatalogView(id: id)
-        case .promo:
-            router.openProductView(id: id)
-        case .bigPromo:
-            return
-        }
+    func didSelectProduct(id: String) {
+        router.openProductView(id: id)
+    }
+    
+    func didSelectCategory(id: CatalogRes) {
+        router.openCatalogView(id: id)
     }
     
     func viewDidLoaded() {
@@ -51,52 +48,50 @@ private extension HomePresenter {
         
         if let bigPromos = bigPromos {
             let bigPromoItems: [BigPromoCatalogItem] = bigPromos.map({ BigPromoCatalogItem(id: $0.id, title: $0.title, imageURL: $0.imageURL)} )
-            bigPromo = CatalogSection(id: "big-promo", type: .bigPromo, items: bigPromoItems)
+            bigPromo = CatalogSection(id: .bigPromo, type: .bigPromo, items: bigPromoItems)
         }
         
         if let firstPromos = firstPromos {
             let firstPromoItems: [PromoCatalogItem] = firstPromos.map({ PromoCatalogItem(id: $0.id, name: $0.name, description: $0.ammount, imageURL: $0.imageURLsSet.first ?? "", price: $0.price) })
-            firstPromo = CatalogSection(id: "promo-first", type: .promo, headerTitle: "Может быть интересно", items: firstPromoItems)
+            firstPromo = CatalogSection(id: .promo_1, type: .promo, headerTitle: CatalogRes.promo_1.getCategoryName(), items: firstPromoItems)
         }
         
         if let secondPromos = secondPromos {
             let secondPromoItems: [PromoCatalogItem] = secondPromos.map({ PromoCatalogItem(id: $0.id, name: $0.name, description: $0.ammount, imageURL: $0.imageURLsSet.first ?? "", price: $0.price) })
-            secondPromo = CatalogSection(id: "promo-second", type: .promo, headerTitle: "Еще больше интересного", items: secondPromoItems)
+            secondPromo = CatalogSection(id: .promo_2, type: .promo, headerTitle: CatalogRes.promo_2.getCategoryName(), items: secondPromoItems)
         }
         
         let allCategories: [CatalogSection?] = [
             bigPromo,
-            setupCategorySection(id: "baking"),
-            setupCategorySection(id: "dairy"),
+            setupCategorySectionFor(.baking),
+            setupCategorySectionFor(.dairy),
             firstPromo,
-            setupCategorySection(id: "vegetables-and-fruits"),
-            setupCategorySection(id: "meat-and-fish"),
+            setupCategorySectionFor(.vegetables_and_fruits),
+            setupCategorySectionFor(.meat_and_fish),
             secondPromo,
-            setupCategorySection(id: "sweets-and-snacks"),
+            setupCategorySectionFor(.sweets_and_snacks),
         ]
         
         return allCategories.compactMap({ $0 })
     }
     
-    func setupCategorySection(id: String) -> CatalogSection? {
-        let title = CatalogRes.getCategoryNameBy(id: id)
-        guard let title = title else { return nil }
+    func setupCategorySectionFor(_ category: CatalogRes) -> CatalogSection? {
+        let title = category.getCategoryName()
 
-        let color = CatalogRes.getCategoryColorBy(id: id)
-        let subcategoryNames = CatalogRes.getSubCategoriesBy(id: id)
+        let color = category.getCategoryColor()
+        let subcategoryNames = category.getSubCategories()
         guard let subcategoryNames = subcategoryNames else { return nil }
         var items: [CategoryCatalogItem] = []
         
-        for name in subcategoryNames {
-            let title = CatalogRes.getCategoryNameBy(id: name)
+        for subcategory in subcategoryNames {
+            let title = subcategory.getCategoryName()
             // TODO: - Use real url for category
             let imageURL = "bag"
-            guard let title = title else { return nil }
-            let item = CategoryCatalogItem(id: name, title: title, imageURL: imageURL)
+            let item = CategoryCatalogItem(catalogID: subcategory, title: title, imageURL: imageURL)
             items.append(item)
         }
         
-        let categorySection = CatalogSection(id: id, type: .category, headerTitle: title, themeColor: color, items: items)
+        let categorySection = CatalogSection(id: category, type: .category, headerTitle: title, themeColor: color, items: items)
         
         return categorySection
     }

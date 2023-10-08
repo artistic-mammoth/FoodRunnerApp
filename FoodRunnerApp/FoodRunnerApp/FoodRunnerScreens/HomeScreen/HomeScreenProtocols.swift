@@ -11,7 +11,8 @@ protocol HomeViewProtocol: AnyObject {
 
 protocol HomePresenterProtocol: AnyObject {
     func viewDidLoaded()
-    func didSelectItem(id: String, type: CatalogSectionType)
+    func didSelectProduct(id: String)
+    func didSelectCategory(id: CatalogRes)
 }
 
 protocol HomeInteractorProtocol: AnyObject {
@@ -19,6 +20,6 @@ protocol HomeInteractorProtocol: AnyObject {
 }
 
 protocol HomeRouterProtocol: AnyObject {
-    func openCatalogView(id: String)
+    func openCatalogView(id: CatalogRes)
     func openProductView(id: String)
 }

@@ -8,7 +8,7 @@
 import UIKit
 
 final class GalleryModuleBuilder {
-    static func build(categoryID: String) -> GalleryViewController {
+    static func build(categoryID: CatalogRes) -> GalleryViewController {
         let interactor = GalleryInteractor()
         let router = GalleryRouter()
         let presenter = GalleryPresenter(router: router, interactor: interactor)

@@ -16,6 +16,7 @@ class StructWrapper<T>: NSObject {
     }
 }
 
+// TODO: - Refactor it
 final class CacheService {
     // MARK: - Singleton
     static let shared = CacheService()

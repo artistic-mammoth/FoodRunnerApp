@@ -22,7 +22,7 @@ final class GalleryPresenter {
 
 // MARK: - GalleryPresenterProtocol
 extension GalleryPresenter: GalleryPresenterProtocol {
-    func viewDidLoaded(categoryID: String) {
+    func viewDidLoaded(categoryID: CatalogRes) {
         
     }
     
