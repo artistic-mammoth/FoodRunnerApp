@@ -22,12 +22,17 @@ final class HomePresenter {
 
 // MARK: - HomePresenterProtocol
 extension HomePresenter: HomePresenterProtocol {
-    func didSelectProduct(id: String) {
-        router.openProductView(id: id)
-    }
-    
-    func didSelectCategory(id: CatalogRes) {
-        router.openCatalogView(id: id)
+    func didSelectItem(id: String, type: CatalogSectionType) {
+        switch type {
+        case .category:
+            if let catalogID = CatalogRes(rawValue: id) {
+                router.openCatalogView(id: catalogID)
+            }
+        case .promo:
+            router.openProductView(id: id)
+        case .bigPromo:
+            return
+        }
     }
     
     func viewDidLoaded() {

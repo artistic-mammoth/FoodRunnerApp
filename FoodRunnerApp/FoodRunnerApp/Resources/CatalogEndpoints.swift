@@ -10,40 +10,47 @@ import Foundation
 enum CatalogEndpoints {
     case homePageInfo
     case productSubcategoryPack(subcategory: CatalogRes)
+    case productFor(id: String)
 }
 
 // MARK: - EndpointComponentProtocol
 extension CatalogEndpoints: EndpointComponent {
-    private var apiPath: String {
-        "/raw"
+    var scheme: String {
+        return "http"
     }
     
     var host: String {
-        "www.pastebin.com"
+        "127.0.0.1"
     }
     
     var path: String {
-        var endpoint: String = ""
         switch self {
         case .homePageInfo:
-            endpoint =  "VbeC9UAj"
-        case .productSubcategoryPack(subcategory: let subcategory):
-            switch subcategory {
-            case .bread:
-                endpoint = "5DiAN6eH"
-            default:
-                endpoint = ""
-            }
+            return "/home-page-info"
+        case .productSubcategoryPack(subcategory: _), .productFor(id: _):
+            return "/products"
         }
-        return apiPath + "/\(endpoint)"
     }
     
     var method: HTTPMethod {
         switch self {
+        default:
+            return .get
+        }
+    }
+    
+    var port: Int? {
+        return 5000
+    }
+    
+    var queryItems: [URLQueryItem]? {
+        switch self {
         case .homePageInfo:
-            return .get
-        case .productSubcategoryPack(subcategory: _):
-            return .get
+            return nil
+        case .productSubcategoryPack(subcategory: let subcategory):
+            return [URLQueryItem(name: "category", value: subcategory.rawValue)]
+        case .productFor(id: let id):
+            return [URLQueryItem(name: "id", value: id)]
         }
     }
 }

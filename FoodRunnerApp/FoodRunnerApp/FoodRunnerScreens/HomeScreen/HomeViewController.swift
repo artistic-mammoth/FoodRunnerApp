@@ -47,27 +47,17 @@ final class HomeViewController: UIViewController {
 // MARK: - HomeViewProtocol
 extension HomeViewController: HomeViewProtocol {
     func updateCatalogDataWith(_ data: CatalogData) {
-            loadingLabel.isHidden = true
-            catalogView.isHidden = false
-            catalogView.catalogData = data
+        loadingLabel.isHidden = true
+        catalogView.isHidden = false
+        catalogView.catalogData = data
     }
 }
 
 // MARK: - HomeCatalogViewDelegate
 extension HomeViewController: HomeCatalogViewDelegate {
     func didSelectItem(id: String, type: CatalogSectionType) {
-        switch type {
-        case .category:
-            if let catalogID = CatalogRes(rawValue: id) {
-                presenter?.didSelectCategory(id: catalogID)
-            }
-        case .promo:
-            presenter?.didSelectProduct(id: id)
-        case .bigPromo:
-            return
-        }
+        presenter?.didSelectItem(id: id, type: type)
     }
-
 }
 
 // MARK: - Private extension

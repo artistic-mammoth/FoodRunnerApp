@@ -1,5 +1,5 @@
 //
-//  CacheService.swift
+//  CacheServiceImpl.swift
 //  FoodRunnerApp
 //
 //  Created by Михайлов Александр on 16.08.2023.
@@ -8,18 +8,10 @@
 import Foundation
 import UIKit
 
-class StructWrapper<T>: NSObject {
-    let value: T
-
-    init(_ _struct: T) {
-        value = _struct
-    }
-}
-
 // TODO: - Refactor it
-final class CacheService {
+final class CacheServiceImpl {
     // MARK: - Singleton
-    static let shared = CacheService()
+    static let shared = CacheServiceImpl()
     private init() {}
     
     private let dataCache: NSCache<NSString, NSData> = {
@@ -35,7 +27,10 @@ final class CacheService {
         cache.totalCostLimit = 100 * 1000 * 1000
         return cache
     }()
-    
+
+}
+
+extension CacheServiceImpl: CacheService {
     func addData(url: String, data: Data) {
         dataCache.setObject(data as NSData, forKey: url as NSString)
     }

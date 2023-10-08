@@ -14,14 +14,6 @@ final class LazyImageView: UIImageView {
         case badURL
     }
     
-    // MARK: - Image Cache
-    private static let imageCache: NSCache<NSString, UIImage> = {
-        let cache = NSCache<NSString, UIImage>()
-        cache.countLimit = 100
-        cache.totalCostLimit = 100 * 1000 * 1000
-        return cache
-    }()
-    
     // MARK: - Public properties
     var imagePlaceholder: UIImage?
     
@@ -33,14 +25,16 @@ final class LazyImageView: UIImageView {
     
     private var session: URLSession
     private var task: URLSessionDataTask?
+    private var cacheService: CacheService
     
     // MARK: - Init
     @available (*, unavailable)
     required init?(coder: NSCoder) { nil }
     
-    init(imagePlaceholder: UIImage? = nil, session: URLSession = URLSession.shared) {
+    init(imagePlaceholder: UIImage? = nil, session: URLSession = URLSession.shared, cacheService: CacheService = CacheServiceImpl.shared) {
         self.imagePlaceholder = imagePlaceholder
         self.session = session
+        self.cacheService = cacheService
         super.init(frame: .zero)
         setupView()
     }
@@ -55,10 +49,9 @@ final class LazyImageView: UIImageView {
             return
         }
         
-        // TODO: - Refactor caching
-        if let cachedImage = LazyImageView.imageCache.object(forKey: imageURL as NSString) {
+        if let cachedData = cacheService.getData(url: imageURL) {
             hidePlaceholder()
-            self.image = cachedImage
+            self.image = UIImage(data: cachedData)
             return
         }
         
@@ -73,7 +66,7 @@ final class LazyImageView: UIImageView {
             }
             
             if let imageFromData = UIImage(data: data) {
-                LazyImageView.imageCache.setObject(imageFromData, forKey: imageURL as NSString)
+                self.cacheService.addData(url: imageURL, data: data)
                 DispatchQueue.main.async {
                     self.hidePlaceholder()
                     self.image = imageFromData

@@ -9,7 +9,7 @@ import UIKit
 
 final class ProductModuleBuilder {
     static func build(id: String) -> ProductViewController {
-        let interactor = ProductInteractor()
+        let interactor = ProductInteractor(networkClient: NetworkClientImpl(), cacheService: CacheServiceImpl.shared)
         let router = ProductRouter()
         let presenter = ProductPresenter(router: router, interactor: interactor)
         let viewController = ProductViewController(id: id)

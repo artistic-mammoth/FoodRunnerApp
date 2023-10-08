@@ -10,7 +10,7 @@ import Foundation
 // MARK: - HomePageInfoResponse
 struct HomePageInfoResponse: Codable {
     let bigPromoData: [BigPromoDatum]?
-    let productPromosIDs1, productPromosIDs2: [ProductPromosIDs]?
+    let productPromosIDs1, productPromosIDs2: [ProductResponse]?
 
     enum CodingKeys: String, CodingKey {
         case bigPromoData = "BigPromoData"
@@ -23,11 +23,4 @@ struct HomePageInfoResponse: Codable {
 struct BigPromoDatum: Codable {
     let id, title: String?
     let imageURL: String?
-}
-
-// MARK: - ProductPromosIDs
-struct ProductPromosIDs: Codable {
-    let id, name, ammount, description: String?
-    let imageURLsSet: [String]?
-    let price: Int?
 }

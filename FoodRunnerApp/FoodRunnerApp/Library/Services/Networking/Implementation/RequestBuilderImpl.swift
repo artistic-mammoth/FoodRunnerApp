@@ -25,9 +25,11 @@ final class RequestBuilderImpl: RequestBuilder {
 private extension RequestBuilderImpl {
     func getURLFrom(_ request: any NetworkRequest) -> URL? {
         var urlComponents: URLComponents = URLComponents()
-        urlComponents.scheme = "https"
+        urlComponents.scheme = request.component.scheme
         urlComponents.host = request.component.host
+        urlComponents.port = request.component.port
         urlComponents.path = request.component.path
+        urlComponents.queryItems = request.component.queryItems
         return urlComponents.url
     }
 }
