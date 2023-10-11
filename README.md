@@ -10,12 +10,16 @@ The app is a simple implementation of a food delivery service.
 
 <p align="center">
   <img src="./Screenshots/Screenshot_1.png" width="200">
+  <img src="./Screenshots/Screenshot_2.png" width="200">
+  <img src="./Screenshots/Screenshot_3.png" width="200">
+  <img src="./Screenshots/Screenshot_4.png" width="200">
 </p>
 
 # Features
 - Using UICollectionViewCompositionalLayout
 - Custom Fonts
 - VIPER
+- Custom API on Python
 
 # Acknowledgement
 - Illustrations from [unsplash.com](https://unsplash.com)
