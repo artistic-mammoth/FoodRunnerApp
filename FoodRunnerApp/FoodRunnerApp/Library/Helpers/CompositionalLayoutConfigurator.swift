@@ -42,7 +42,7 @@ class CompositionalLayoutConfigurator {
         NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: .init(
                 widthDimension: .fractionalWidth(1),
-                heightDimension: .estimated(50)),
+                heightDimension: .estimated(80)),
             elementKind: UICollectionView.elementKindSectionHeader,
             alignment: .top)
     }

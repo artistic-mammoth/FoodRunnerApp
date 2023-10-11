@@ -155,7 +155,7 @@ private extension HomeCatalogView {
             case .category:
                 return CompositionalLayoutConfigurator.getSectionLayoutWithHorizontalGroup(
                     itemWidth: .fractionalWidth(1/3),
-                    groupHeight: .estimated(160),
+                    groupHeight: .fractionalWidth(1/3),
                     supplementaryItems: [CompositionalLayoutConfigurator.getTitleHeader()],
                     itemContentInsets: .init(top: 3, leading: 3, bottom: 3, trailing: 3))
             case .promo:

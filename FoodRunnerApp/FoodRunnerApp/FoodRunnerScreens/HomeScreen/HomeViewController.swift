@@ -16,8 +16,8 @@ final class HomeViewController: UIViewController {
     
     private lazy var loadingLabel: UILabel = {
         $0.text = "Загрузка..."
-        $0.textColor = .black
-        $0.font = .boldInter(size: 20)
+        $0.textColor = .purpleAccent
+        $0.font = .blackInter(size: 20)
         $0.textAlignment = .center
         return $0
     }(UILabel())
@@ -67,7 +67,7 @@ private extension HomeViewController {
         
         catalogView.delegate = self
                 
-        view.backgroundColor = .white
+        view.backgroundColor = .whiteMain
         
         catalogView.isHidden = true
         

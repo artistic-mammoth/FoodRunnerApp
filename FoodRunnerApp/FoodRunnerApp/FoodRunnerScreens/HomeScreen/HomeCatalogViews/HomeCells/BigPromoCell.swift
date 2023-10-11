@@ -13,7 +13,7 @@ class BigPromoCell: UICollectionViewCell {
     
     // MARK: - Views
     private lazy var title: UILabel = {
-        $0.textColor = .white
+        $0.textColor = .whiteMain
         $0.font = .boldInter(size: 17)
         $0.numberOfLines = 0
         $0.lineBreakMode = .byWordWrapping
@@ -27,7 +27,7 @@ class BigPromoCell: UICollectionViewCell {
     }(LazyImageView())
     
     private lazy var gradientSubstrate: CAGradientLayer = {
-        $0.colors = [UIColor(hexString: "222831").cgColor, UIColor.clear.cgColor]
+        $0.colors = [UIColor.blackMain.cgColor, UIColor.clear.cgColor]
         $0.startPoint = CGPoint(x: 0.5, y: 0)
         $0.endPoint = CGPoint(x: 0.5, y: 0.5)
         $0.opacity = 0.9
@@ -66,7 +66,7 @@ class BigPromoCell: UICollectionViewCell {
         addViews([image, title])
         layer.insertSublayer(gradientSubstrate, at: 1)
         
-        backgroundColor = .systemGray6
+        backgroundColor = .clear
         layer.cornerRadius = 13
         clipsToBounds = true
         gradientSubstrate.isHidden = true

@@ -13,8 +13,8 @@ class CategoryCell: UICollectionViewCell {
     
     // MARK: - Views
     private lazy var titleLabel: UILabel = {
-        $0.textColor = .black
-        $0.font = .boldInter(size: 15)
+        $0.textColor = .whiteMain
+        $0.font = .boldInter(size: 17)
         $0.numberOfLines = 0
         $0.textAlignment = .left
         return $0
@@ -23,7 +23,7 @@ class CategoryCell: UICollectionViewCell {
     private lazy var imageView = UIImageView()
     
     private lazy var gradientSubstrate: CAGradientLayer = {
-        $0.colors = [UIColor.white.cgColor, UIColor.clear.cgColor]
+        $0.colors = [UIColor.purpleAccent.cgColor, UIColor.clear.cgColor]
         $0.startPoint = CGPoint(x: 0.4, y: 0)
         $0.endPoint = CGPoint(x: 0.6, y: 0.9)
         $0.opacity = 0.2
@@ -49,7 +49,8 @@ class CategoryCell: UICollectionViewCell {
     func configureWith(label: String, color: UIColor, imageURL: String) {
         titleLabel.text = label
         imageView.image = UIImage(named: imageURL)
-        backgroundColor = color
+//        backgroundColor = color
+        backgroundColor = .purpleSecondary
     }
     
     // MARK: - Private methods
@@ -67,12 +68,11 @@ class CategoryCell: UICollectionViewCell {
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 7),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             
-            imageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 30),
+            imageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 45),
             imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 30),
             imageView.heightAnchor.constraint(equalToConstant: 124),
             imageView.widthAnchor.constraint(equalToConstant: 124)
         ])
     }
     
-
 }

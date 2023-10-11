@@ -26,4 +26,13 @@ extension UIImage {
         }
         return icon
     }()
+    
+    static let plusImage: UIImage = {
+        guard let icon = UIImage(systemName: "plus")?
+            .withTintColor(.whiteMain, renderingMode: .alwaysOriginal)
+            .applyingSymbolConfiguration(.init(font: .boldInter(size: 20), scale: .large)) else {
+            return UIImage()
+        }
+        return icon
+    }()
 }

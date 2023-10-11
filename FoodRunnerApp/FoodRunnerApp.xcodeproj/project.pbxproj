@@ -26,6 +26,7 @@
 		C716D49A2AD2C14700DA940C /* BreadCategoryDataAPI.json in Resources */ = {isa = PBXBuildFile; fileRef = C716D4992AD2C14700DA940C /* BreadCategoryDataAPI.json */; };
 		C716D49D2AD2CA4000DA940C /* LazyImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C716D49C2AD2CA4000DA940C /* LazyImageView.swift */; };
 		C716D49F2AD2CA6000DA940C /* ImageRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C716D49E2AD2CA6000DA940C /* ImageRes.swift */; };
+		C73D8EBE2AD70895005A4F97 /* ColorRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73D8EBD2AD70895005A4F97 /* ColorRes.swift */; };
 		C73DADCF2A8E98FB0091A73C /* BigPromoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73DADCE2A8E98FB0091A73C /* BigPromoData.swift */; };
 		C74DC66C2A87EA2E005DDF7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74DC66B2A87EA2E005DDF7A /* AppDelegate.swift */; };
 		C74DC66E2A87EA2E005DDF7A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74DC66D2A87EA2E005DDF7A /* SceneDelegate.swift */; };
@@ -119,6 +120,7 @@
 		C716D4992AD2C14700DA940C /* BreadCategoryDataAPI.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = BreadCategoryDataAPI.json; sourceTree = "<group>"; };
 		C716D49C2AD2CA4000DA940C /* LazyImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyImageView.swift; sourceTree = "<group>"; };
 		C716D49E2AD2CA6000DA940C /* ImageRes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRes.swift; sourceTree = "<group>"; };
+		C73D8EBD2AD70895005A4F97 /* ColorRes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorRes.swift; sourceTree = "<group>"; };
 		C73DADCE2A8E98FB0091A73C /* BigPromoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigPromoData.swift; sourceTree = "<group>"; };
 		C74DC6682A87EA2E005DDF7A /* FoodRunnerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodRunnerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C74DC66B2A87EA2E005DDF7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -362,6 +364,7 @@
 				C7FB94B12A8EA21500D2F01D /* CatalogRes.swift */,
 				C716D4932AD2B88B00DA940C /* CatalogEndpoints.swift */,
 				C716D49E2AD2CA6000DA940C /* ImageRes.swift */,
+				C73D8EBD2AD70895005A4F97 /* ColorRes.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -729,6 +732,7 @@
 				C765BBC22A90070000CC0D44 /* GalleryCollectionView.swift in Sources */,
 				C716D49F2AD2CA6000DA940C /* ImageRes.swift in Sources */,
 				C74DC6A52A87EC96005DDF7A /* HomeViewController.swift in Sources */,
+				C73D8EBE2AD70895005A4F97 /* ColorRes.swift in Sources */,
 				C716D4832AD2B66600DA940C /* HTTPMethod.swift in Sources */,
 				C74DC6B12A8805D1005DDF7A /* CatalogData.swift in Sources */,
 				C761F3352A8E7431001571AC /* ProductDataResponse.swift in Sources */,

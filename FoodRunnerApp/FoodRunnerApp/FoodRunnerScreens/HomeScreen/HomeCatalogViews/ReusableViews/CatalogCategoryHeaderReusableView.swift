@@ -13,7 +13,7 @@ class CatalogCategoryHeaderReusableView: UICollectionReusableView {
     
     // MARK: - Views
     private lazy var title: UILabel = {
-        $0.textColor = .black
+        $0.textColor = .blackMain
         $0.font = .boldInter(size: 23)
         $0.textAlignment = .left
         return $0

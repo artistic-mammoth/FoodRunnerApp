@@ -13,27 +13,34 @@ class PromoCell: UICollectionViewCell {
     
     // MARK: - Views
     private lazy var nameLabel: UILabel = {
-        $0.textColor = .black
-        $0.font = .mediumInter(size: 15)
-        $0.numberOfLines = 2
+        $0.textColor = .blackMain
+        $0.font = .mediumInter(size: 17)
+        $0.numberOfLines = 1
         $0.lineBreakMode = .byTruncatingTail
         $0.textAlignment = .left
         return $0
     }(UILabel())
     
     private lazy var descriptionLabel: UILabel = {
-        $0.textColor = .gray
+        $0.textColor = .blackMain
         $0.font = .regularInter(size: 13)
         $0.textAlignment = .left
         return $0
     }(UILabel())
     
     private lazy var priceLabel: UILabel = {
-        $0.textColor = .black
-        $0.font = .boldInter(size: 20)
+        $0.textColor = .whiteMain
+        $0.font = .boldInter(size: 17)
         $0.textAlignment = .left
         return $0
     }(UILabel())
+    
+    private lazy var priceSubstrateView: UIView = {
+        $0.backgroundColor = .purpleAccent
+        $0.layer.cornerRadius = 9
+        $0.clipsToBounds = true
+       return $0
+    }(UIView())
     
     private lazy var imageView: LazyImageView = {
         $0.contentMode = .scaleAspectFill
@@ -42,7 +49,7 @@ class PromoCell: UICollectionViewCell {
     }(LazyImageView())
     
     private lazy var substrateView: UIView = {
-        $0.backgroundColor = .white
+        $0.backgroundColor = .whiteMain
         $0.layer.cornerRadius = 13
         $0.clipsToBounds = true
        return $0
@@ -64,7 +71,7 @@ class PromoCell: UICollectionViewCell {
         
         descriptionLabel.text = description
         nameLabel.text = name
-        priceLabel.text = "\(price) ₽"
+        priceLabel.text = "\(price) ₽ +"
         
         imageView.fetchImage(from: imageURL)
         substrateView.isHidden = false
@@ -72,37 +79,41 @@ class PromoCell: UICollectionViewCell {
 
     // MARK: - Private methods
     private func setupView() {
-        addViews([substrateView, nameLabel, descriptionLabel, priceLabel])
+        addViews([substrateView, nameLabel, descriptionLabel, priceSubstrateView, priceLabel])
         substrateView.addViews(imageView)
         
-        backgroundColor = UIColor(hexString: "edf2f4")
+        backgroundColor = .clear
         layer.cornerRadius = 13
         clipsToBounds = true
-
-        let topPriceConstraint = priceLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 3)
-        topPriceConstraint.priority = .defaultLow
         
+        layer.borderColor = UIColor.purpleSecondary.cgColor
+        layer.borderWidth = 2
+
         NSLayoutConstraint.activate([
-            substrateView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 7),
+            substrateView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 9),
             substrateView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            substrateView.heightAnchor.constraint(equalTo: heightAnchor, constant: -10),
-            substrateView.widthAnchor.constraint(equalTo: heightAnchor, constant: -10),
+            substrateView.heightAnchor.constraint(equalTo: heightAnchor, constant: -12),
+            substrateView.widthAnchor.constraint(equalTo: heightAnchor, constant: -12),
             
             imageView.centerXAnchor.constraint(equalTo: substrateView.centerXAnchor),
             imageView.centerYAnchor.constraint(equalTo: substrateView.centerYAnchor),
             imageView.heightAnchor.constraint(equalTo: substrateView.heightAnchor),
             imageView.widthAnchor.constraint(equalTo: substrateView.widthAnchor),
 
-            nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 5),
+            nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 7),
             nameLabel.leadingAnchor.constraint(equalTo: substrateView.trailingAnchor, constant: 10),
-            nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -7),
+            nameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -9),
             
             descriptionLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 3),
             descriptionLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
             
-            topPriceConstraint,
-            priceLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5),
-            priceLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
+            priceSubstrateView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -7),
+            priceSubstrateView.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
+            priceSubstrateView.trailingAnchor.constraint(equalTo: priceLabel.trailingAnchor, constant: 10),
+            priceSubstrateView.heightAnchor.constraint(equalToConstant: 30),
+            
+            priceLabel.leadingAnchor.constraint(equalTo: priceSubstrateView.leadingAnchor, constant: 10),
+            priceLabel.centerYAnchor.constraint(equalTo: priceSubstrateView.centerYAnchor)
         ])
     }
 
