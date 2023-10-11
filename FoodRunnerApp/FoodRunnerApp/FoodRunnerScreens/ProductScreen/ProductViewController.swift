@@ -113,8 +113,8 @@ extension ProductViewController: ProductViewProtocol {
 // MARK: - Private extension
 private extension ProductViewController {
     func setupView() {
-        view.addViews([mainImage, substrateView])
-        substrateView.addViews([titleLabel, descriptionLabel, priceSubstrateView, priceLabel, addToCartButton, addToCartButtonImage])
+        view.addViews(mainImage, substrateView)
+        substrateView.addViews(titleLabel, descriptionLabel, priceSubstrateView, priceLabel, addToCartButton, addToCartButtonImage)
         
         view.backgroundColor = .purpleSecondary
         addToCartButtonImage.image = .plusImage

@@ -79,7 +79,7 @@ class PromoCell: UICollectionViewCell {
 
     // MARK: - Private methods
     private func setupView() {
-        addViews([substrateView, nameLabel, descriptionLabel, priceSubstrateView, priceLabel])
+        addViews(substrateView, nameLabel, descriptionLabel, priceSubstrateView, priceLabel)
         substrateView.addViews(imageView)
         
         backgroundColor = .clear

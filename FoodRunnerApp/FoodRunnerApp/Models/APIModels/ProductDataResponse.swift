@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - ProductDataResponse
 struct ProductDataResponse: Codable {
-    let productData: [ProductDatum]
+    let productsData: [ProductDatum]
 }
 
 // MARK: - ProductDatum

@@ -35,7 +35,7 @@ __products_data = [
         },
         {
             "id": "de3ab713-e4f0-44b6-8fc5-4660fbbcc0c3",
-            "name": "Томаты))",
+            "name": "Томаты",
             "ammount": "250 гр",
             "description": "Нечего сказать, кушайте",
             "imageURLsSet": ["https://img.freepik.com/free-photo/tomatoes_144627-15411.jpg?w=2000&t=st=1692288563~exp=1692289163~hmac=3ba2fee4d0f23924505fd6e7e4c0d2e71993ca7ce727fa35e75f71398e202d49"],

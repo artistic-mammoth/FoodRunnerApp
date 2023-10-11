@@ -63,7 +63,7 @@ extension HomeViewController: HomeCatalogViewDelegate {
 // MARK: - Private extension
 private extension HomeViewController {
     func setupView() {
-        view.addViews([loadingLabel, catalogView])
+        view.addViews(loadingLabel, catalogView)
         
         catalogView.delegate = self
                 

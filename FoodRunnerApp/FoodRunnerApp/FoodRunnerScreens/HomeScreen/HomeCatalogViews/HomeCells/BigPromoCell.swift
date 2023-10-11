@@ -63,7 +63,7 @@ class BigPromoCell: UICollectionViewCell {
     
     // MARK: - Private methods
     private func setupView() {
-        addViews([image, title])
+        addViews(image, title)
         layer.insertSublayer(gradientSubstrate, at: 1)
         
         backgroundColor = .clear

@@ -27,6 +27,7 @@
 		C716D49D2AD2CA4000DA940C /* LazyImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C716D49C2AD2CA4000DA940C /* LazyImageView.swift */; };
 		C716D49F2AD2CA6000DA940C /* ImageRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C716D49E2AD2CA6000DA940C /* ImageRes.swift */; };
 		C73D8EBE2AD70895005A4F97 /* ColorRes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73D8EBD2AD70895005A4F97 /* ColorRes.swift */; };
+		C73D8EC22AD71C9C005A4F97 /* GalleryInfoRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73D8EC12AD71C9C005A4F97 /* GalleryInfoRequest.swift */; };
 		C73DADCF2A8E98FB0091A73C /* BigPromoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73DADCE2A8E98FB0091A73C /* BigPromoData.swift */; };
 		C74DC66C2A87EA2E005DDF7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74DC66B2A87EA2E005DDF7A /* AppDelegate.swift */; };
 		C74DC66E2A87EA2E005DDF7A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74DC66D2A87EA2E005DDF7A /* SceneDelegate.swift */; };
@@ -121,6 +122,7 @@
 		C716D49C2AD2CA4000DA940C /* LazyImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyImageView.swift; sourceTree = "<group>"; };
 		C716D49E2AD2CA6000DA940C /* ImageRes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRes.swift; sourceTree = "<group>"; };
 		C73D8EBD2AD70895005A4F97 /* ColorRes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorRes.swift; sourceTree = "<group>"; };
+		C73D8EC12AD71C9C005A4F97 /* GalleryInfoRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryInfoRequest.swift; sourceTree = "<group>"; };
 		C73DADCE2A8E98FB0091A73C /* BigPromoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigPromoData.swift; sourceTree = "<group>"; };
 		C74DC6682A87EA2E005DDF7A /* FoodRunnerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodRunnerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C74DC66B2A87EA2E005DDF7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -264,6 +266,22 @@
 				C716D49C2AD2CA4000DA940C /* LazyImageView.swift */,
 			);
 			path = ViewComponents;
+			sourceTree = "<group>";
+		};
+		C73D8EBF2AD71AC2005A4F97 /* GalleryModels */ = {
+			isa = PBXGroup;
+			children = (
+				C765BBC62A90080300CC0D44 /* GalleryData.swift */,
+			);
+			path = GalleryModels;
+			sourceTree = "<group>";
+		};
+		C73D8EC02AD71C8C005A4F97 /* GalleryRequests */ = {
+			isa = PBXGroup;
+			children = (
+				C73D8EC12AD71C9C005A4F97 /* GalleryInfoRequest.swift */,
+			);
+			path = GalleryRequests;
 			sourceTree = "<group>";
 		};
 		C74D375F2A8947BE00479CDB /* HomeCells */ = {
@@ -497,7 +515,6 @@
 			isa = PBXGroup;
 			children = (
 				C761F3342A8E7431001571AC /* ProductDataResponse.swift */,
-				C765BBC62A90080300CC0D44 /* GalleryData.swift */,
 			);
 			path = APIModels;
 			sourceTree = "<group>";
@@ -531,6 +548,8 @@
 		C7D54E372A8A3DC8009CBB63 /* GalleryScreen */ = {
 			isa = PBXGroup;
 			children = (
+				C73D8EC02AD71C8C005A4F97 /* GalleryRequests */,
+				C73D8EBF2AD71AC2005A4F97 /* GalleryModels */,
 				C7D54E382A8A3DEF009CBB63 /* GalleryViews */,
 				C7D54E392A8A3E35009CBB63 /* GalleryViewController.swift */,
 				C77055262A8CEADE00286F8E /* GalleryPresenter.swift */,
@@ -726,6 +745,7 @@
 				C7D54E412A8A58E5009CBB63 /* HomeInteractor.swift in Sources */,
 				C7054B812A88278700E4E23E /* BigPromoCell.swift in Sources */,
 				C74DC66E2A87EA2E005DDF7A /* SceneDelegate.swift in Sources */,
+				C73D8EC22AD71C9C005A4F97 /* GalleryInfoRequest.swift in Sources */,
 				C716D4922AD2B80100DA940C /* HomePageInfoRequest.swift in Sources */,
 				C716D4942AD2B88B00DA940C /* CatalogEndpoints.swift in Sources */,
 				C7B314F22A88EBC800387390 /* HomeCatalogView.swift in Sources */,

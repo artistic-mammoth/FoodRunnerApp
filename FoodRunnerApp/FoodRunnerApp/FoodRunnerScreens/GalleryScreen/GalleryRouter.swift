@@ -13,5 +13,8 @@ final class GalleryRouter {
 }
 
 extension GalleryRouter: GalleryRouterProtocol {
-    
+    func openProductView(id: String) {
+        let vc = ProductModuleBuilder.build(id: id)
+        viewController?.navigationController?.pushViewController(vc, animated: true)
+    }
 }

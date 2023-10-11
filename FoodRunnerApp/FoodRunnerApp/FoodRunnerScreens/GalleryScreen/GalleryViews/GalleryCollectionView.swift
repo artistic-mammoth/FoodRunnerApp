@@ -7,7 +7,14 @@
 
 import UIKit
 
+protocol GalleryCollectionViewDelegate: UIViewController {
+    func didSelectItem(id: String)
+}
+
 final class GalleryCollectionView: UIView {
+    // MARK: - Public properties
+    weak var delegate: GalleryCollectionViewDelegate?
+    
     /// Data for present in catalog view
     var galleryData: GalleryData = [] {
         didSet {
@@ -43,26 +50,24 @@ extension GalleryCollectionView: UICollectionViewDelegate, UICollectionViewDataS
         galleryData[section].items.count
     }
 
-    //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    //        let cell = collectionView.cellForItem(at: indexPath)
-    //        animateTappedCell(cell) { [weak self] in
-    //            // TODO: - Update when will set ID
-    //            guard let data = self?.catalogData[indexPath.section].type else { return }
-    //            guard let id = self?.catalogData[indexPath.section].items[indexPath.row].id else { return }
-    //            self?.delegate?.didSelectItem(id: id, type: data)
-    //        }
-    //    }
+        func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            let cell = collectionView.cellForItem(at: indexPath)
+            animateTappedCell(cell) { [weak self] in
+                // TODO: - Update when will set ID
+                guard let id = self?.galleryData[indexPath.section].items[indexPath.row].id else { return }
+                self?.delegate?.didSelectItem(id: id)
+            }
+        }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GalleryProductCell.reuseIdentifier, for: indexPath) as? GalleryProductCell else { fatalError("Cannot create new cell") }
         
-//        let item = galleryData[indexPath.section].items[indexPath.row]
+        let item = galleryData[indexPath.section].items[indexPath.row]
         
-        cell.configureWith()
+        cell.configureWith(name: item.name, description: item.description, price: item.price, imageURL: item.imageURL)
         
         return cell
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -110,11 +115,33 @@ private extension GalleryCollectionView {
     func createCollectionViewLayout() -> UICollectionViewCompositionalLayout? {
         UICollectionViewCompositionalLayout {sectionIndex, _ in
             return CompositionalLayoutConfigurator.getSectionLayoutWithHorizontalGroup(
-                itemWidth: .fractionalWidth(1/3),
-                groupHeight: .estimated(160),
-                supplementaryItems: [CompositionalLayoutConfigurator.getTitleHeader()],
+                itemWidth: .fractionalWidth(1/2),
+                groupHeight: .estimated(320),
                 itemContentInsets: .init(top: 3, leading: 3, bottom: 3, trailing: 3))
         }
     }
+    
+    // FIXME: - Make completion оptional and make more better animation
+    func animateTappedCell(_ cell: UIView?, completion: @escaping ()->()?) {
+        animateHighlightCell(cell) { [weak self] in
+            self?.animateUnhighlightCell(cell)
+            completion()
+        }
+    }
+    
+    func animateHighlightCell(_ cell: UIView?, completion: @escaping ()->()?) {
+        UIView.animate(withDuration: 0.2) {
+            cell?.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+            cell?.alpha = 0.9
+        } completion: { _ in
+            completion()
+        }
+    }
+    
+    func animateUnhighlightCell(_ cell: UIView?) {
+        UIView.animate(withDuration: 0.2) {
+            cell?.transform = .identity
+            cell?.alpha = 1
+        }
+    }
 }
-

@@ -55,7 +55,7 @@ class CategoryCell: UICollectionViewCell {
     
     // MARK: - Private methods
     private func setupView() {
-        addViews([imageView, titleLabel])
+        addViews(imageView, titleLabel)
         
         layer.insertSublayer(gradientSubstrate, at: 0)
         
